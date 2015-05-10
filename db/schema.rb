@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150510014336) do
     t.string   "name"
     t.integer  "high_time",  default: 30
     t.integer  "low_time",   default: 20
+    t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
