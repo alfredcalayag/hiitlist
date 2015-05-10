@@ -14,6 +14,13 @@ describe UsersController do
       get :show, id: user
       expect(response).to render_template :show
     end
+
+    it "assigns @lists given the @user_id" do
+      user = create(:user)
+      list = create(:list, user_id: user.id)
+      get :show, id: user
+      expect(assigns(:list)).to eq list
+    end
   end
 
   # describe "GET #index" do

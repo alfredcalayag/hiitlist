@@ -24,5 +24,9 @@ describe List do
     expect(list[:low_time]).to eq(20)
   end
 
+  # it "has an association to a user" do
+  #   create(:user)
+  # end
+
 end
 

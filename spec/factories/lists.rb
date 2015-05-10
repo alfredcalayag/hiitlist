@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :list do
-    name "MyString"
-    high_time 1
-    low_time 1
+    name "Test List"
+    association :user
   end
 end
