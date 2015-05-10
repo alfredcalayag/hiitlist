@@ -1,9 +1,22 @@
 <!-- show.html.erb -->
-<h1>WELCOME to HIIT List!</h1>
+<h1>Welcome Back, <%= @user.name %>!</h1>
 
 
+<% if @lists %>
+<h2>Your HIIT Lists</h2>
+  <% @lists.each do |list| %>
+<h4><%= list.name %></h4>
+<ul>
+  <li>High Intensity Duration: 00:<%= list.high_time %></li>
+  <li>Rest Duration: 00:<%= list.low_time %></li>
+</ul>
+  <% end %>
+<% else %>
+<p>You have no HIIT Lists! Try creating a new one.</p>
+<% end %>
 
-<p>If the user is logged in, this will show the user's logged in view.</p>
 
-<p>If a user is not logged in, this will display a login or register option.</p>
+  <!-- <p>If the user is logged in, this will show the user's logged in view.</p>
 
+  <p>If a user is not logged in, this will display a login or register option.</p>
+ -->
