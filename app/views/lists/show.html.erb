@@ -5,6 +5,15 @@
   <li>Rest Duration: 00:<%= @list.low_time %></li>
 </ul>
 
+<%= form_for( [@list, @list.exercises.build] ) do |f| %>
+  <p>
+    <%= f.hidden_field :list_id, :value => @list.id %>
+    <%= f.label "New Exercise: " %>
+    <%= f.text_field :name, :placeholder => "Add new exercise" %>
+
+    <%= f.submit "Add workout" %>
+  </p>
+<% end %>
 
 <% if @exercises %>
 <ol>
@@ -16,3 +25,8 @@
 <% else %>
 <p>You have no exercises in this HIIT List! Add more exercises.</p>
 <% end %>
+
+<div>
+<h1 id="timer">...</h1>
+</div>
+</h1>
