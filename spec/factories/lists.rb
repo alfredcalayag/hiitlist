@@ -1,8 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :list do
-    name "Test List"
+    name Faker::Company.name
     association :user
   end
 end
