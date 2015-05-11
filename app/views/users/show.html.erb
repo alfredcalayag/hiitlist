@@ -5,15 +5,21 @@
 <% if @lists %>
 <h2>Your HIIT Lists</h2>
   <% @lists.each do |list| %>
-<h4><%= list.name %></h4>
-<ul>
+
+<a href="http://localhost:3000/lists/<%= list.id %>">
+<h4><%= list.name %> Workout</h4>
+</a>
+
+<!-- <ul>
   <li>High Intensity Duration: 00:<%= list.high_time %></li>
   <li>Rest Duration: 00:<%= list.low_time %></li>
-</ul>
+</ul> -->
   <% end %>
 <% else %>
 <p>You have no HIIT Lists! Try creating a new one.</p>
 <% end %>
+
+
 
 
   <!-- <p>If the user is logged in, this will show the user's logged in view.</p>

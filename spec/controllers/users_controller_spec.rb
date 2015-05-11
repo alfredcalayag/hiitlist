@@ -19,8 +19,16 @@ describe UsersController do
       user = create(:user)
       list = create(:list, user_id: user.id)
       get :show, id: user
-      expect(assigns(:list)).to eq list
+      expect(assigns(:lists)[0]).to eq list
     end
+
+    # it "assigns @exercises given the list_id" do
+    #   user = create(:user)
+    #   list = create(:list, user_id: user.id)
+    #   exercise = create(:exercise, list_id: list.id)
+    #   get :show, id: user.id
+    #   expect(assigns(:exercises)[0]).to eq exercise
+    # end
   end
 
   # describe "GET #index" do
