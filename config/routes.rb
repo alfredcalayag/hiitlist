@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   root 'users#index'
   resources :users, :only => [:index, :show, :create]
-  resources :lists, :only => [:show]
-  resources :exercises, :only =>[:create, :show]
+  resources :exercises, :only =>[:index]
+  resources :lists, :only => [:show] do
+    resources :exercises, :only =>[:create, :show]
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
