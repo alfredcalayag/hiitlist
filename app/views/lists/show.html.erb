@@ -1,0 +1,18 @@
+<!-- List: show.html.erb -->
+<h1><%= @list.name %> Workout</h1>
+<ul>
+  <li>High Intensity Duration: 00:<%= @list.high_time %></li>
+  <li>Rest Duration: 00:<%= @list.low_time %></li>
+</ul>
+
+
+<% if @exercises %>
+<ol>
+  <% @exercises.each do |exercise| %>
+  <li><%= exercise.name %></li>
+  <% end %>
+</ol>
+
+<% else %>
+<p>You have no exercises in this HIIT List! Add more exercises.</p>
+<% end %>
