@@ -35,6 +35,8 @@ This is app is intended for just about anyone that is in good physical condition
 
 
 ##Technologies
-- Rails
+- Framework: Rails
+- Testing(Models and Controllers): Rspec
+- Front-end: HTML/CSS/Javascript/Jquery
+- Version Control: Git + Github
 - (More TBD)
-
