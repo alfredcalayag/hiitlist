@@ -19,27 +19,25 @@ window.onload = function() {
   $('#current_exercise').text("READY TO WORK?");
 
 
-function newTimer(seconds) {
-  clearInterval(countdownTimer);
-  // var seconds = 10;
+newTimer = function(duration) {
+
   secondPassed = function() {
-      var minutes = Math.round((seconds - 30)/60);
-      var remainingSeconds = seconds % 60;
+      var minutes = Math.round((duration - 30)/60);
+      var remainingSeconds = duration % 60;
       if (remainingSeconds < 10) {
           remainingSeconds = "0" + remainingSeconds;
       }
       timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
-      if (seconds == 0) {
-          clearInterval(countdownTimer);
+      if (duration <= 0) {
+          clearInterval(countdownInterval);
           console.log("Time complete!");
-          // deferred.resolve();
           return;
       } else {
-          seconds--;
+          duration--;
       }
   }
+  var countdownInterval = setInterval(secondPassed, 1000);
 
-  var countdownTimer = setInterval('secondPassed()', 1000);
 }
 
 
@@ -67,47 +65,51 @@ function newTimer(seconds) {
   // }
 
 
-
-
-  // function startTimer(m, s) {
-  //     timer.innerHTML = m + ":" + s;
-  //     if (s == 0 && m == 0) {
-  //       // Done.
-  //       console.log("Time's Up!");
-  //       return;
-  //     }
-  //     else if (s == 0) {
-  //         if (m == 0) {
-  //             return;
-  //         } else if (m != 0) {
-  //             m = m - 1;
-  //             s = 60;
-  //         }
-  //     }
-  //     s = s - 1;
-  //     id = setTimeout(function() {
-  //         startTimer(m, s)
-  //     }, 1000);
-  // }
-
-
-  // function three(){
-  //   var deferred = $.Deferred();
-
-  //   setTimeout(function(){
-  //     console.log('three');
-  //     $('#current_exercise').text(collection[2].innerHTML);
-  //     deferred.resolve();
-  //   }, 6000);
-
-  //   return deferred.promise();
-  // }
-
-  // one().then(two).then(three).then(two);
-
   begin = function(){
     // three().then(three);
     one("First exercise", 5).then(one("Second exercise", 9));
   }
+
+var exArray = ['jumps','squats', 'kicks', 'punches'];
+var index = 0;
+
+beginWorkout = function() {
+  $('#current_exercise').text("Get Ready..");
+
+  var duration = 5;
+
+  function nextExercise() {
+    $('#current_exercise').text(exArray[index]);
+    index++;
+    // newTimer(5);
+    duration = 5;
+    if (index > exArray.length) {
+      clearInterval(exerciseInterval);
+      clearInterval(countdownInterval);
+      console.log("Exercise completed!");
+      return;
+    }
+  }
+
+  secondPassed = function() {
+      var minutes = Math.round((duration - 30)/60);
+      var remainingSeconds = duration % 60;
+      if (remainingSeconds < 10) {
+          remainingSeconds = "0" + remainingSeconds;
+      }
+      timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
+      // if (duration < 0) {
+      //     clearInterval(countdownInterval);
+      //     console.log("Exercise completed!");
+      //     return;
+      // } else {
+          duration--;
+      // }
+  }
+  var countdownInterval = setInterval(secondPassed, 1000);
+  var exerciseInterval = setInterval(nextExercise, 5500);
+
+
+}
 
 }
