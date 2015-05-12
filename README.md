@@ -38,5 +38,20 @@ This is app is intended for just about anyone that is in good physical condition
 - Framework: Rails
 - Testing(Models and Controllers): Rspec
 - Front-end: HTML/CSS/Javascript/Jquery
+- Styling: SASS/CSS
 - Version Control: Git + Github
-- (More TBD)
+
+
+##Future Developments
+- Continue style developing on the media breaks for phone-landscape and tablet sizes.  Currently, started with a mobile-first approach with the intention to expand from there.
+
+- Create a single-page app.  AJAXify it!
+
+- Complete
+
+##Current Problems
+- Needing to load specific javascript for a specific page.  Otherwise, serving from the asset pipeline runs all of the scripts on every page.  =/
+
+- My javascript is loading too early on the exercises page.  This is solved by refreshing the page, and it will load correctly.  But that's annoying.
+
+- I thought I could quickly deploy this on Heroku, but... forgot that I you can't use SQLite3 ( https://devcenter.heroku.com/articles/sqlite3).  Will need to switch to Postgres to deploy.
