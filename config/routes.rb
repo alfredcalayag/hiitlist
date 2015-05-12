@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'users#index'
-  resources :users, :only => [:index, :show, :create]
-  resources :exercises, :only =>[:index]
-  resources :lists, :only => [:show] do
-    resources :exercises, :only =>[:create, :show]
+
+  resources :lists do
+    resources :exercises
+  end
+
+  resources :users, :only => [:index, :show, :create] do
+    resources :lists, :only => [:index, :show, :create] do
+      resources :exercises, :only =>[:index, :create, :show]
+    end
 end
 
   # Example of regular route:
