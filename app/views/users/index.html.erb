@@ -1,9 +1,28 @@
 <h1>Confidential List of All Users</h1>
 
-<% if @users %>
+<h3>Create a new user</h3>
+<%= form_for :user, url: users_path do |f| %>
+  <div>
+    <p>
+      <%= f.label "Username" %>
+      <%= f.text_field :name, :placeholder => "e.g. John Doe" %>
+    </p>
 
+    <p>
+      <%= f.label "E-mail" %>
+      <%= f.text_field :email, :placeholder => "e.g. johndoe@bmail.com" %>
+    </p>
+
+    <p>
+    <%= f.submit "Create" %>
+    </p>
+  </div>
+<% end %>
+
+
+<% if @users %>
 <ul>
-<% @users.each do |user| %>
+<% @users.reverse.each do |user| %>
   <li>
     <a href="users/<%= user.id %>"><%= user.name %></a>
   </li>
