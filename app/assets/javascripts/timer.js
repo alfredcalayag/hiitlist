@@ -51,7 +51,7 @@ window.onload = function() {
       if (duration == highTime) {
         $('#current_exercise').text(exArray[index]);
 
-        if (index % 2 == 0) {
+        if (index < exArray.length && index % 2 == 0) {
           $('#next_exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
         } else {
           $('#next_exercise').text(" ");
