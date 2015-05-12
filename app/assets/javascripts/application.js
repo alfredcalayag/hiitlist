@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require audio
 //= require timer
+//= require audio

@@ -1,21 +1,28 @@
 <!-- List: show.html.erb -->
-<h1><%= @list.name %> Workout</h1>
-<ul>
-  <li>High Intensity Duration: 00:<%= @list.high_time %></li>
-  <li>Rest Duration: 00:<%= @list.low_time %></li>
-</ul>
+<header class="workout_title">
+  <h2><%= @list.name %> Workout</h2>
+</header>
 
+<aside class="duration">
+  <ul>
+    <li>High Intensity Duration: 00:<%= @list.high_time %></li>
+    <li>Rest Duration: 00:<%= @list.low_time %></li>
+  </ul>
+</aside>
+
+<section class="form_exercise">
 <%= form_for( [@list, @list.exercises.build] ) do |f| %>
-  <p>
     <%= f.hidden_field :list_id, :value => @list.id %>
-    <%= f.label "New Exercise: " %>
-    <%= f.text_field :name, :placeholder => "Add new exercise" %>
+    <%= f.label "Add New Exercise: " %>
+    <%= f.text_field :name, :placeholder => "e.g. Jumping Squats" %>
 
-    <%= f.submit "Add workout" %>
-  </p>
+    <%= f.submit "Add" %>
 <% end %>
+</section>
 
+<section class="playlist">
 <% if @exercises %>
+<h3>Your exercises</h3>
 <ol>
   <% @exercises.each do |exercise| %>
   <li class="exercise"><%= exercise.name %></li>
@@ -25,20 +32,33 @@
 <% else %>
 <p>You have no exercises in this HIIT List! Add more exercises.</p>
 <% end %>
+</section>
 
-<div>
-  <h1 id="current_exercise">...</h1>
-</div>
+<button type="button" class="purple-btn" id="start">Begin HIIT!</button>
 
-<div>
-<h1 id="timer">...</h1>
-</div>
+<!-- Workout Screen -->
+<section class="workout-screen">
 
-<div>
-  <button type="button" id="start">Begin HIIT!</button>
-</div>
+  <article class="instruction-area">
+    <div>
+      <h1 id="timer">...</h1>
+    </div>
 
-<br>
+
+    <h1 id="instruction">...</h1>
+
+
+    <div>
+      <h4 id="next-exercise"> </h4>
+    </div>
+
+    <button type="button" class="purple-btn" id="complete-btn">DONE</button>
+  </article>
+
+</section>
+
+
+<!-- <br>
 <div>
   <button type="button" id="pause">Pause</button>
 </div>
@@ -46,10 +66,7 @@
 <div>
   <button type="button" id="resume">Resume</button>
 </div>
-
-<div>
-  <h4 id="next_exercise"> </h4>
-</div>
+ -->
 
 <audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
 

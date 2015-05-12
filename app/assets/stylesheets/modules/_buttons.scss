@@ -1,0 +1,180 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Button Styles
+
+Buttons are a pretty important part of your site's style, so it's
+important to have a consistent baseline for them. Use this stylesheet
+to create all kinds of buttons.
+
+Helpful Links:
+http://galp.in/blog/2011/08/02/the-ui-guide-part-1-buttons/
+
+******************************************************************/
+
+/*********************
+BUTTON DEFAULTS
+We're gonna use a placeholder selector here
+so we can use common styles. We then use this
+to load up the defaults in all our buttons.
+
+Here's a quick video to show how it works:
+http://www.youtube.com/watch?v=hwdVpKiJzac
+
+*********************/
+
+%btn {
+  display: inline-block;
+  position: relative;
+  font-family: $sans-serif;
+  text-decoration: none;
+  color: $white;
+  font-size: 0.9em;
+  /*font-size: 34px;*/
+  line-height: 2em;
+  font-weight: normal;
+  padding: 1% 0;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+
+  outline: none;
+
+
+  @include transition(background-color 0.2s ease-in-out);
+
+  // hovering on the btn
+  &:hover, &:focus {
+    /*color: $white;*/
+    text-decoration: none;
+  } // end hover
+
+  // clicking on the button
+  &:active {
+    top: 1px; // adds a tiny hop to the click
+  } // end active
+
+} // end .button
+
+/*
+An example button.
+You can use this example if you want. Just replace all the variables
+and it will create a button dependant on those variables.
+*/
+.blue-btn {
+  @extend %btn; // here we load the btn defaults
+  background-color: $blue;
+
+  &:hover,
+  &:focus {
+    background-color: darken($blue, 4%);
+  } // end hover
+
+  &:active {
+    background-color: darken($blue, 5%);
+  } // end active
+
+} // end blue button
+
+.purple-btn {
+  @extend %btn;
+  background-color: $purple;
+  border: 4px solid $purple;
+
+  display: block;
+  position: relative;
+  /*margin: 1% auto;*/
+  margin: 10% auto;
+  width: 240px;
+  clear: both;
+
+  &:hover,
+  &:focus {
+    /*background-color: darken($purple, 4%);*/
+    background-color: transparentize($purple, 0.8);
+  } // end hover
+
+  &:active {
+    background-color: darken($purple, 5%);
+  } // end active
+}
+
+.purple-btn:nth-of-type(n+2) {
+  &:hover,
+  &:focus {
+    color: $purple;
+  }
+}
+
+.last-btn {
+  @extend %btn;
+  background-color: $purple;
+    border: 4px solid $purple;
+
+  display: block;
+  position: relative;
+  margin: 3% auto;
+  width: 240px;
+  clear:both;
+
+  &:hover,
+  &:focus {
+    /*background-color: darken($purple, 4%);*/
+    background-color: transparentize($purple, 0.8);
+    color: $purple;
+  } // end hover
+
+  &:active {
+    background-color: darken($purple, 5%);
+  } // end active
+}
+
+/* ==== Drop-down Menu Button ===== */
+#menu-btn-close {
+  @extend %btn;
+  @include transition(height 0.2s ease-in-out);
+
+  position: absolute;
+  right: 0;
+  vertical-align: top;
+  padding: 0 0.75em;
+  float: right;
+  /*border: 1px solid $white;*/
+  font-size: 1.75em;
+  color: rgba($purple,0);
+  z-index: 0;
+}
+
+
+#menu-btn {
+  @extend %btn;
+  @include transition(height 0.2s ease-in-out);
+  @include transition(color 0.2s ease-in-out);
+
+  vertical-align: top;
+  padding: 0 0.75em;
+  float: right;
+
+  font-size: 1.75em;
+
+  &:hover {
+    @include transition(color 0.2s ease-in-out);
+    color: lighten($link-color, 16%);
+  }
+
+  &:focus {
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  &:focus + nav {
+    max-height: 400px;
+  }
+
+  & ~ #menu-btn-close {
+    z-index: 2;
+  }
+
+}
+
