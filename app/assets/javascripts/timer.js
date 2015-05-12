@@ -1,7 +1,9 @@
 // timer.js
 
-window.onload = function() {
+$(document).ready(function() {
   console.log("Ok timer loaded!");
+  // console.log("Audio loaded");
+  // bellSound = document.getElementById('bell');
 
   var timer = document.getElementById("timer");
   // var start = document.getElementById("start");
@@ -50,6 +52,7 @@ window.onload = function() {
   function secondPassed() {
       if (duration == highTime) {
         $('#current_exercise').text(exArray[index]);
+        bellSound.play();
 
         if (index < exArray.length && index % 2 == 0) {
           $('#next_exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
@@ -73,8 +76,24 @@ window.onload = function() {
 
 }
 
+  $('#start').click(function(e){
+    e.preventDefault();
+    // console.log($(this));
+    $(this).remove();
+    beginWorkout(10);
+  })
 
-}
+  $('#pause').click(function(e){
+    e.preventDefault();
+    console.log("pause");
+  })
+
+  $('#resume').click(function(e){
+    e.preventDefault();
+    console.log("resume");
+  })
+
+});
 
 // ========= REFERENCE SECTION ============
 

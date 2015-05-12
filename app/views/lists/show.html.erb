@@ -35,5 +35,22 @@
 </div>
 
 <div>
+  <button type="button" id="start">Begin HIIT!</button>
+</div>
+
+<br>
+<div>
+  <button type="button" id="pause">Pause</button>
+</div>
+<br>
+<div>
+  <button type="button" id="resume">Resume</button>
+</div>
+
+<div>
   <h4 id="next_exercise"> </h4>
 </div>
+
+<audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
+
+<%= content_for :header do %><script><%= javascript_include_tag "timer" %></script><% end %>

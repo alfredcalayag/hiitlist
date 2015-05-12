@@ -24,7 +24,7 @@
 <ul>
 <% @users.reverse.each do |user| %>
   <li>
-    <a href="users/<%= user.id %>"><%= user.name %></a>
+  <%= link_to "#{user.name}", user_path(user) %>
   </li>
 <% end %>
 </ul>
