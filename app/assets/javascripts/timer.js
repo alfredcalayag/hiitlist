@@ -14,62 +14,75 @@ $(document).ready(function() {
   timer.innerHTML = value;
 
   // Grab the list of exercises from the page
-  collection = document.getElementsByClassName('exercise');
+  collection = $('.exercise');
 
-  $('#current_exercise').text("READY TO WORK?");
-
-
-
-  // var exArray = ['get ready...', 'jumps', 'rest', 'squats','rest','kicks', 'rest', 'punches'];
-
+  // Build exercise playlist
   exArray = ['Get Ready...'];
-  for(var i = 0; i < collection.length; i++){
-    exArray.push(collection[i].innerHTML);
-    if (i < collection.length-1) {
-      exArray.push("Rest");
-    }
-  }
+  populateArray();
 
-  var index = 0;
+  function populateArray(){
+    for(i = 0; i < collection.length; i++){
+      exArray.push(collection[i].innerHTML);
+      if (i < collection.length-1) {
+        exArray.push("Rest");
+      }
+    }
+  };
+
+
+  $('#complete-btn').click(function(e){
+    e.preventDefault();
+    console.log('Quack');
+    $('.workout-screen').removeClass("full-screen");
+  })
 
   beginWorkout = function(highTime) {
+    var index = 0;
+    // $('#instruction').text("READY TO WORK?");
+    $(".workout-screen").addClass("full-screen");
+    var duration = highTime;
 
-  var duration = highTime;
-
-  function nextExercise() {
-    index++;
-    duration = highTime;  //
-    if (index > exArray.length) {
-      clearInterval(exerciseInterval);
-      clearInterval(countdownInterval);
-      timer.innerHTML = "00:00";
-      $('#current_exercise').text("Workout Complete!");
-      console.log("Workout Complete!");
-      return;
-    }
-  }
-
-  function secondPassed() {
-      if (duration == highTime) {
-        $('#current_exercise').text(exArray[index]);
+    function nextExercise() {
+      index++;
+      duration = highTime;  //
+      if (index > exArray.length-1) {
+        clearInterval(exerciseInterval);
+        clearInterval(countdownInterval);
+        timer.innerHTML = "00:00";
+        $('#instruction').text("Workout Complete!");
+        console.log("Workout Complete!");
         bellSound.play();
+        bellSound.play();
+        bellSound.play();
+        $('#start').addClass(".appear");
+        $('#complete-btn').css("display","block");
+        return;
+      }
+    }
 
-        if (index < exArray.length && index % 2 == 0) {
-          $('#next_exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
-        } else {
-          $('#next_exercise').text(" ");
+    function secondPassed() {
+        if (duration == highTime) {
+          $('#instruction').text(exArray[index]);
+          bellSound.play();
+
+          if (index < exArray.length && index % 2 == 0) {
+            $('.workout-screen').css("background", "#62600C");
+            $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
+          } else {
+            $('.workout-screen').css("background", "slategrey");
+            $('#next-exercise').text(" ");
+          }
+          console.log("BUZZER NOISE");
         }
-        console.log("BUZZER NOISE");
-      }
 
-      var minutes = Math.round((duration - 30)/60);
-      var remainingSeconds = duration % 60;
-      if (remainingSeconds < 10) {
-          remainingSeconds = "0" + remainingSeconds;
-      }
-      timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
-      duration--;
-  }
+        var minutes = Math.round((duration - 30)/60);
+        var remainingSeconds = duration % 60;
+        if (remainingSeconds < 10) {
+            remainingSeconds = "0" + remainingSeconds;
+        }
+        timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
+        duration--;
+    }
 
   var countdownInterval = setInterval(secondPassed, 1000); // 1 second
   var exerciseInterval = setInterval(nextExercise, duration*1000 + 600);
@@ -79,8 +92,8 @@ $(document).ready(function() {
   $('#start').click(function(e){
     e.preventDefault();
     // console.log($(this));
-    $(this).remove();
-    beginWorkout(10);
+    $(this).addClass(".hide");
+    beginWorkout(5);
   })
 
   $('#pause').click(function(e){
@@ -91,6 +104,12 @@ $(document).ready(function() {
   $('#resume').click(function(e){
     e.preventDefault();
     console.log("resume");
+  })
+
+  $('#complete-btn').click(function(e){
+    e.preventDefault();
+    console.log('Quack');
+    $('workout-screen').removeClass("full-screen");
   })
 
 });
@@ -126,7 +145,7 @@ $(document).ready(function() {
   //   var timeBuffer = seconds * 1000 + 1500;
   //   newTimer(seconds);
 
-  //   $('#current_exercise').text(description);
+  //   $('#instruction').text(description);
 
   //   setTimeout(function(){
   //     console.log('one');
