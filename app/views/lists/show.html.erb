@@ -18,7 +18,7 @@
 <% if @exercises %>
 <ol>
   <% @exercises.each do |exercise| %>
-  <li><%= exercise.name %></li>
+  <li class="exercise"><%= exercise.name %></li>
   <% end %>
 </ol>
 
@@ -27,6 +27,31 @@
 <% end %>
 
 <div>
+  <h1 id="current_exercise">...</h1>
+</div>
+
+<div>
 <h1 id="timer">...</h1>
 </div>
-</h1>
+
+
+<!--
+<script>
+var seconds = 10;
+function secondPassed() {
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('countdown').innerHTML = "Buzz Buzz";
+    } else {
+        seconds--;
+    }
+}
+
+var countdownTimer = setInterval('secondPassed()', 1000);
+</script> -->
