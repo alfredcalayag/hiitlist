@@ -16,7 +16,18 @@ window.onload = function() {
 
   $('#current_exercise').text("READY TO WORK?");
 
-  var exArray = ['get ready...', 'jumps', 'rest', 'squats','rest','kicks', 'rest', 'punches'];
+
+
+  // var exArray = ['get ready...', 'jumps', 'rest', 'squats','rest','kicks', 'rest', 'punches'];
+
+  exArray = ['Get Ready...'];
+  for(var i = 0; i < collection.length; i++){
+    exArray.push(collection[i].innerHTML);
+    if (i < collection.length-1) {
+      exArray.push("Rest");
+    }
+  }
+
   var index = 0;
 
   beginWorkout = function(highTime) {
@@ -31,7 +42,7 @@ window.onload = function() {
       clearInterval(countdownInterval);
       timer.innerHTML = "00:00";
       $('#current_exercise').text("Workout Complete!");
-      console.log("Exercise completed!");
+      console.log("Workout Complete!");
       return;
     }
   }
@@ -39,6 +50,12 @@ window.onload = function() {
   function secondPassed() {
       if (duration == highTime) {
         $('#current_exercise').text(exArray[index]);
+
+        if (index % 2 == 0) {
+          $('#next_exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
+        } else {
+          $('#next_exercise').text(" ");
+        }
         console.log("BUZZER NOISE");
       }
 
