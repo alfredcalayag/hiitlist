@@ -1,13 +1,16 @@
 <!-- show.html.erb -->
-<h1>Welcome Back, <%= @user.name %>!</h1>
+<header class="workout_title">
 
+  <h1>Welcome Back, <%= @user.name %>!</h1>
+</header>
 
+<section>
 <h3>Create a new HIIT List</h3>
 <%= form_for [@user, @user.lists.build] do |f| %>
   <div>
       <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.label "New List Name: " %>
-      <%= f.text_field :name, :placeholder => "e.g. Pump it up List" %>
+<!--       <%= f.label "New List Name: " %>
+ -->      <%= f.text_field :name, :placeholder => "e.g. Pump it up List" %>
 
     <p>
     <%= f.submit "Create" %>
@@ -15,23 +18,22 @@
 
   </div>
 <% end %>
+</section>
 
+<section>
 <% if @lists %>
 <h2>Your HIIT Lists</h2>
   <% @lists.each do |list| %>
-
-<a href="http://localhost:3000/users/<%= @user.id %>/lists/<%= list.id %>">
-<h4><%= list.name %> Workout</h4>
-</a>
-<!-- <ul>
-  <li>High Intensity Duration: 00:<%= list.high_time %></li>
-  <li>Rest Duration: 00:<%= list.low_time %></li>
-</ul> -->
+  <a class="plain-link" href="http://localhost:3000/users/<%= @user.id %>/lists/<%= list.id %>">
+    <div class="list-item">
+      <h4><%= list.name %> Workout</h4>
+    </div>
+  </a>
   <% end %>
 <% else %>
 <p>You have no HIIT Lists! Try creating a new one.</p>
 <% end %>
-
+</section>
 
 
 

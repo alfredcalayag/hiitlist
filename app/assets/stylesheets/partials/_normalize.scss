@@ -254,6 +254,7 @@ ul {
     margin: 1em 0;
 }
 
+
 dd {
     margin: 0;
 }
@@ -269,6 +270,10 @@ menu {
 ol,
 ul {
     padding: 0;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /*

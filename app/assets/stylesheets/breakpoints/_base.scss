@@ -28,6 +28,7 @@ body {
 	background-color: $charcoal;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
+  /*margin: 0.5em;*/
 }
 
 /********************
@@ -357,6 +358,11 @@ header, section, aside {
   margin: 0.5em;
 }
 
+section {
+  border-bottom: 1px solid $light-gray;
+  padding: 0.5em 0;
+}
+
 header {
   text-align: center;
 }
@@ -376,6 +382,25 @@ ol li {
 
   border: 1px solid gray;
   padding: 0.2em 0.4em;
+}
+
+.list-item {
+  margin: 0.5em auto;
+  text-align: center;
+
+  border-radius: 5px;
+  border: 2px solid yellow;
+  background: $green;
+
+  color: $charcoal;
+  a, a:visited, a:focus {
+    text-decoration: none;
+    color: charcoal;
+  }
+}
+
+.plain-link{
+  text-decoration:none;
 }
 
 .workout_title {

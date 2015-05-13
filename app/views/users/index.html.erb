@@ -1,25 +1,29 @@
-<h1>List of All Users</h1>
+<header class="workout_title">
+  <h1>List of All Users</h1>
+</header>
 
-<h3>Create a new user</h3>
-<%= form_for :user, url: users_path do |f| %>
-  <div>
-    <p>
-      <%= f.label "Username" %>
-      <%= f.text_field :name, :placeholder => "e.g. John Doe" %>
-    </p>
+<section>
+  <h3>Create a new user</h3>
+  <%= form_for :user, url: users_path do |f| %>
+    <div>
+      <p>
+        <%= f.label "Username" %>
+        <%= f.text_field :name, :placeholder => "e.g. John Doe" %>
+      </p>
 
-    <p>
-      <%= f.label "E-mail" %>
-      <%= f.text_field :email, :placeholder => "e.g. johndoe@bmail.com" %>
-    </p>
+      <p>
+        <%= f.label "E-mail" %>
+        <%= f.text_field :email, :placeholder => "e.g. johndoe@bmail.com" %>
+      </p>
 
-    <p>
-    <%= f.submit "Create" %>
-    </p>
-  </div>
-<% end %>
+      <p>
+      <%= f.submit "Create" %>
+      </p>
+    </div>
+  <% end %>
+</section>
 
-
+<section>
 <% if @users %>
 <ul>
 <% @users.reverse.each do |user| %>
@@ -34,3 +38,4 @@
 Sorry!  There are no users in the database. Please try seeding again.
 
 <% end %>
+</section>

@@ -93,7 +93,7 @@ $(document).ready(function() {
     e.preventDefault();
     // console.log($(this));
     $(this).addClass(".hide");
-    beginWorkout(5);
+    beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   })
 
   $('#pause').click(function(e){

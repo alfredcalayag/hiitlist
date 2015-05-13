@@ -42,7 +42,7 @@ http://www.youtube.com/watch?v=hwdVpKiJzac
   outline: none;
 
 
-  @include transition(background-color 0.2s ease-in-out);
+  @include transition(background-color 0s ease-in-out);
 
   // hovering on the btn
   &:hover, &:focus {
@@ -79,8 +79,9 @@ and it will create a button dependant on those variables.
 
 .purple-btn {
   @extend %btn;
-  background-color: $purple;
-  border: 4px solid $purple;
+  background-color: $green;
+  border: 4px solid $green;
+  color: $charcoal;
 
   display: block;
   position: relative;
@@ -91,19 +92,19 @@ and it will create a button dependant on those variables.
 
   &:hover,
   &:focus {
-    /*background-color: darken($purple, 4%);*/
-    background-color: transparentize($purple, 0.8);
+    /*background-color: darken($green, 4%);*/
+    background-color: transparentize($green, 0.8);
   } // end hover
 
   &:active {
-    background-color: darken($purple, 5%);
+    background-color: darken($green, 5%);
   } // end active
 }
 
 .purple-btn:nth-of-type(n+2) {
   &:hover,
   &:focus {
-    color: $purple;
+    color: $green;
   }
 }
 
