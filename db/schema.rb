@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150510225830) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
     t.integer  "list_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150510225830) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "exercises", ["list_id"], name: "index_exercises_on_list_id"
+  add_index "exercises", ["list_id"], name: "index_exercises_on_list_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
@@ -38,4 +41,5 @@ ActiveRecord::Schema.define(version: 20150510225830) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "exercises", "lists"
 end
