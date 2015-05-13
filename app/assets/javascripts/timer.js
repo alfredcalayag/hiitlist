@@ -109,8 +109,10 @@ $(document).ready(function() {
     $('.playlist').css("display", "none");
     $('.workout-screen').removeClass("full-screen");
     $('#instruction').text("Loading...");
+    $('.playlist').css("display", "block");
     timer.innerHTML = "00:00";
     $(this).css("display", "none");
+
   });
 
 
