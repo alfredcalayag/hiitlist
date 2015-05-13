@@ -77,6 +77,15 @@ and it will create a button dependant on those variables.
 
 } // end blue button
 
+
+.small-btn {
+  @extend %btn;
+  background-color: $green;
+  border: 2px solid $green;
+  color: $charcoal;
+  width: 50px;
+}
+
 .purple-btn {
   @extend %btn;
   background-color: $green;
@@ -108,28 +117,6 @@ and it will create a button dependant on those variables.
   }
 }
 
-.last-btn {
-  @extend %btn;
-  background-color: $purple;
-    border: 4px solid $purple;
-
-  display: block;
-  position: relative;
-  margin: 3% auto;
-  width: 240px;
-  clear:both;
-
-  &:hover,
-  &:focus {
-    /*background-color: darken($purple, 4%);*/
-    background-color: transparentize($purple, 0.8);
-    color: $purple;
-  } // end hover
-
-  &:active {
-    background-color: darken($purple, 5%);
-  } // end active
-}
 
 /* ==== Drop-down Menu Button ===== */
 #menu-btn-close {
