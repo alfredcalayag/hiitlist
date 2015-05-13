@@ -89,6 +89,7 @@ $(document).ready(function() {
     e.preventDefault();
     console.log("begin button loaded");
     $(this).addClass(".hide");
+    $('.playlist').css("display", "none");
     beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   });
 
@@ -105,13 +106,11 @@ $(document).ready(function() {
   $('#complete-btn').click(function(e){
     e.preventDefault();
     console.log('Quack');
-    $('workout-screen').removeClass("full-screen");
-  });
-
-  $('#complete-btn').click(function(e){
-    e.preventDefault();
-    console.log('Quack');
+    $('.playlist').css("display", "none");
     $('.workout-screen').removeClass("full-screen");
+    $('#instruction').text("Loading...");
+    timer.innerHTML = "00:00";
+    $(this).css("display", "none");
   });
 
 
