@@ -106,10 +106,9 @@ $(document).ready(function() {
   $('#complete-btn').click(function(e){
     e.preventDefault();
     console.log('Quack');
-    $('.playlist').css("display", "none");
+    $('.playlist').css("display", "block");
     $('.workout-screen').removeClass("full-screen");
     $('#instruction').text("Loading...");
-    $('.playlist').css("display", "block");
     timer.innerHTML = "00:00";
     $(this).css("display", "none");
 
