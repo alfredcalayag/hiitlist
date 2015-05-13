@@ -70,4 +70,5 @@
 
 <audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
 
-<%= content_for :header do %><script><%= javascript_include_tag "timer" %></script><% end %>
+<%= javascript_include_tag "timer" %>
+<%= javascript_include_tag "audio" %>

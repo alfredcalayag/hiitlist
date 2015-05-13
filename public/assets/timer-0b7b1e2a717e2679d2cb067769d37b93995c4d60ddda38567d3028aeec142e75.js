@@ -1,7 +1,7 @@
 // timer.js
 
 $(document).ready(function() {
-  console.log("Timer loaded");
+  console.log("Ok timer loaded!");
   // console.log("Audio loaded");
   // bellSound = document.getElementById('bell');
 
@@ -87,7 +87,7 @@ $(document).ready(function() {
   // ====== Buttons =========
   $('#start').click(function(e){
     e.preventDefault();
-    console.log("begin button loaded");
+    console.log("quack");
     $(this).addClass(".hide");
     beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   });

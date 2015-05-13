@@ -1,4 +1,4 @@
 $(document).ready(function(){
-  console.log("Bell Loaded");
+  console.log("Audio loaded");
   bellSound = document.getElementById('bell');
 });
