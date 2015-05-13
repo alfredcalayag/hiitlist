@@ -24,7 +24,7 @@
 <% if @lists %>
 <h2>Your HIIT Lists</h2>
   <% @lists.each do |list| %>
-  <a class="plain-link" href="http://localhost:3000/users/<%= @user.id %>/lists/<%= list.id %>">
+  <a class="plain-link" href="/users/<%= @user.id %>/lists/<%= list.id %>">
     <div class="list-item">
       <h4><%= list.name %> Workout</h4>
     </div>
