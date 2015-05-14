@@ -1,48 +1,94 @@
 // timer.js
 
+
+var Timer = function() {
+  this.display = $("#timer");
+}
+
+Timer.prototype = {
+  reset: function() {
+    this.display.html("00:00");
+  }
+}
+
+var Instruction = function() {
+  this.display = $("#instruction");
+}
+Instruction.prototype = {
+  updateDisplay: function(newInstruction) {
+    this.display.html(newInstruction);
+  }
+}
+
+var Playlist = function() {
+  this.collection = [];
+  this.trackList = [];
+}
+
+Playlist.prototype = {
+  load: function() {
+    this.collection = $(".exercise");
+    this.trackList.push("Get Ready...");
+    for(i = 0; i < this.collection.length; i++){
+      this.trackList.push(this.collection[i].html);
+      if (i < this.collection.length-1) {
+        this.trackList.push("Rest");
+      }
+    };
+  }
+}
+
+var Workout = function(userHighTime, userLowTime) {
+  this.display = $(".workout-screen");
+  this.highTime = userHighTime;
+  this.lowTime = userLowTime;
+  this.loadingTime = 8;
+}
+
+Workout.prototype = {
+  fullScreen: function() {
+    this.display.addClass("full-screen");
+  },
+  hideScreen: function() {
+    this.display.removeClass("full-screen");
+  },
+  start: function() {
+    this.roundDuration = loadingTime;
+    this.fullScreen();
+  }
+}
+
+
+// =====================
+
 $(document).ready(function() {
-  console.log("Timer loaded");
-  // console.log("Audio loaded");
-  // bellSound = document.getElementById('bell');
+  console.log("OO Time");
+  var myTimer = new Timer();
+  var myPlaylist = new Playlist();
 
-  var timer = document.getElementById("timer");
-  // var start = document.getElementById("start");
-  // var pause = document.getElementById("pause");
-  // var resume = document.getElementById("resume");
-  var id;
-  var value = "00:00";
-  timer.innerHTML = value;
-
-  // Grab the list of exercises from the page
-  collection = $('.exercise');
+  myTimer.reset();
+  myPlaylist.load();
 
   // Build exercise playlist
-  exArray = ['Get Ready...'];
-  populateArray();
+  // $collection = $('.exercise');
+  // exArray = ['Get Ready...'];
+  // populateArray();
 
-  function populateArray(){
-    for(i = 0; i < collection.length; i++){
-      exArray.push(collection[i].innerHTML);
-      if (i < collection.length-1) {
-        exArray.push("Rest");
-      }
-    }
-  };
+  // function populateArray(){
+  //   for(i = 0; i < $collection.length; i++){
+  //     exArray.push($collection[i].innerHTML);
+  //     if (i < $collection.length-1) {
+  //       exArray.push("Rest");
+  //     }
+  //   }
+  // }
 
 
 
-  beginWorkout = function(highTime) {
-  // TODO: Object Orient it!
+
+  beginWorkout = function(highTime, lowTime) {
   // TODO: Allow user input of lowTime
-
-    // Trial for fixing sound on mobile browsers:
-    bellSound.play();
-    bellSound.pause();
-    gong.play();
-    gong.pause();
-
     var index = 0;
-    // $('#instruction').text("READY TO WORK?");
     $(".workout-screen").addClass("full-screen");
     var duration = 8;
     var lowTime = 5;
@@ -64,7 +110,7 @@ $(document).ready(function() {
       // If last exercise completed, finish the workout!
       if (index > exArray.length-1) {
         clearInterval(countdownInterval);
-        $('#instruction').text("Workout Complete!");
+        $instruction.text("Workout Complete!");
         console.log("Workout Complete!");
         gong.play();
         $('#start').addClass(".appear");
@@ -80,11 +126,11 @@ $(document).ready(function() {
             remainingSeconds = "0" + remainingSeconds;
         }
 
-        timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
+        timerDigits.innerHTML = "0" + minutes + ":" + remainingSeconds;
 
         // start of a new round, i.e. when we reset the duration above
         if (duration == roundTime && index < exArray.length) {
-          $('#instruction').text(exArray[index]);
+          $instruction.text(exArray[index]);
 
           if (index < exArray.length && index % 2 == 0) { // Rest round
             $('.workout-screen').css("background", "#62600C");
@@ -101,11 +147,12 @@ $(document).ready(function() {
           if (index < exArray.length-1) { bellSound.play(); }
           nextExercise();
         }
-
     }
 
-  var countdownInterval = setInterval(secondPassed, 1000); // 1 second
-}
+    var countdownInterval = setInterval(secondPassed, 1000); // 1 second
+  }
+
+
 
   // ====== Buttons =========
   $('#start').click(function(e){
@@ -131,57 +178,9 @@ $(document).ready(function() {
     console.log('Quack');
     $('.playlist').css("display", "block");
     $('.workout-screen').removeClass("full-screen");
-    $('#instruction').text("Loading...");
-    timer.innerHTML = "00:00";
+    $instruction.text("Loading...");
+    timerDigits.innerHTML = "00:00";
     $(this).css("display", "none");
-
   });
 
-
 });
-
-// ========= REFERENCE SECTION ============
-
-// Deprecated timer example.  For reference only.
-// newTimer = function(duration) {
-
-//   secondPassed = function() {
-//       var minutes = Math.round((duration - 30)/60);
-//       var remainingSeconds = duration % 60;
-//       if (remainingSeconds < 10) {
-//           remainingSeconds = "0" + remainingSeconds;
-//       }
-//       timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
-//       if (duration <= 0) {
-//           clearInterval(countdownInterval);
-//           console.log("Time complete!");
-//           return;
-//       } else {
-//           duration--;
-//       }
-//   }
-//   var countdownInterval = setInterval(secondPassed, 1000);
-
-// }
-
-
-// Deprecated promise function example.  For reference only.
-  // var one = function(description, seconds){
-  //   var deferred = $.Deferred();
-  //   var timeBuffer = seconds * 1000 + 1500;
-  //   newTimer(seconds);
-
-  //   $('#instruction').text(description);
-
-  //   setTimeout(function(){
-  //     console.log('one');
-  //     deferred.resolve();
-  //   }, timeBuffer); //allows newTimer to complete
-
-  //     return deferred.promise();
-  // }
-
-  // begin = function(){
-  //   // three().then(three);
-  //   one("First exercise", 5).then(one("Second exercise", 9));
-  // }
