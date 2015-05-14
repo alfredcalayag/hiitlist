@@ -35,6 +35,12 @@ $(document).ready(function() {
   // TODO: Object Orient it!
   // TODO: Allow user input of lowTime
 
+    // Trial for fixing sound on mobile browsers:
+    bellSound.play();
+    bellSound.pause();
+    gong.play();
+    gong.pause();
+
     var index = 0;
     // $('#instruction').text("READY TO WORK?");
     $(".workout-screen").addClass("full-screen");
