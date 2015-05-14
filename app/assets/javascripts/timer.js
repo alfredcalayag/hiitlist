@@ -26,11 +26,9 @@ Playlist.prototype = {
     this.collection = $(".exercise");
     this.trackList.push("Get Ready...");
 
-    for(var i = 0; i < this.collection.length; i++){
-      // function(i) {
-        // console.log(i);
-        this.trackList.push(this.collection[i].html);
-      // };
+    // console.log(this.trackList);
+    for(var i = 0; i < this.collection.length; i++) {
+      this.trackList.push(this.collection[i].textContent);
     }
     this.trackList.push("Rest");
   }
@@ -69,15 +67,15 @@ Workout.prototype = {
   // }
 }
 
-var Timer = function(myWorkout) {
+var Timer = function(myWorkout, myPlaylist) {
   this.display = $("#timer");
   this.countdownInterval;
   this.minutes;
   this.remainingSeconds;
-
+  this.playlist = myPlaylist;
   this.workout = myWorkout;
-  this.playlist = new Playlist();
-  this.playlist.load();
+  // this.playlist = new Playlist();
+  // this.playlist.load());
   // console.log(this.playlist.trackList[this.playlist.index + 1]);
 }
 
@@ -123,11 +121,6 @@ Timer.prototype = {
     // Rest rounds are at even indexes.
     // High Intensity are at odd indexes.
 
-    // console.log(this.workout.duration);
-    // console.log(this.workout.roundTime);
-    console.log(this.playlist.index);
-    console.log(this.workout.duration);
-
     if (this.playlist.index % 2 == 0) {
       this.workout.roundTime = this.workout.lowTime - 1;
       this.workout.duration = this.workout.lowTime - 1;
@@ -136,7 +129,6 @@ Timer.prototype = {
       this.workout.roundTime = this.workout.highTime - 1;
       this.workout.duration = this.workout.highTime - 1;
     }
-    console.log(this.workout.duration);
 
     // If last exercise completed, finish the workout!
     if (this.playlist.index > this.playlist.trackList.length - 1) {
@@ -187,8 +179,10 @@ $(document).ready(function() {
     // $(this).addClass(".hide");
     // $('.playlist').css("display", "none");
     // beginWorkout(20); // TODO: Allow user input.  For now, manual assignment for demo purposes.
+    var playlist = new Playlist();
+    playlist.load();
     var workout = new Workout(20, 10);
-    var timer = new Timer(workout);
+    var timer = new Timer(workout, playlist);
     timer.start();
   });
 
