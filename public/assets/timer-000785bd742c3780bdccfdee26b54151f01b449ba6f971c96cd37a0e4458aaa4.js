@@ -32,23 +32,35 @@ $(document).ready(function() {
 
 
   beginWorkout = function(highTime) {
+  // TODO: Object Orient it!
+  // TODO: Allow user input of lowTime
+
     var index = 0;
     // $('#instruction').text("READY TO WORK?");
     $(".workout-screen").addClass("full-screen");
-    var duration = highTime;
+    var duration = 8;
+    var lowTime = 5;
+    var roundTime = 8;
 
     function nextExercise() {
       index++;
-      duration = highTime;  //
+
+      // Reset the timer to the round duration.  Either Rest or High Intensity
+      if (index % 2 == 0) {  // rest round
+        roundTime = lowTime - 1;
+        duration = lowTime - 1;
+      }
+      else {
+        roundTime = highTime - 1; // high-intensity round
+        duration = highTime - 1;
+      }
+
+      // If last exercise completed, finish the workout!
       if (index > exArray.length-1) {
-        clearInterval(exerciseInterval);
         clearInterval(countdownInterval);
-        timer.innerHTML = "00:00";
         $('#instruction').text("Workout Complete!");
         console.log("Workout Complete!");
-        // bellSound.play(); // FIXME: this is happening at every exercise!
-        // bellSound.play();
-        // bellSound.play();
+        gong.play();
         $('#start').addClass(".appear");
         $('#complete-btn').css("display","block");
         return;
@@ -56,32 +68,37 @@ $(document).ready(function() {
     }
 
     function secondPassed() {
-        if (duration == highTime) {
-          $('#instruction').text(exArray[index]);
-          bellSound.play();
-
-          if (index < exArray.length && index % 2 == 0) {
-            $('.workout-screen').css("background", "#62600C");
-            $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
-          } else {
-            $('.workout-screen').css("background", "slategrey");
-            $('#next-exercise').text(" ");
-          }
-          console.log("BUZZER NOISE");
-        }
-
         var minutes = Math.round((duration - 30)/60);
         var remainingSeconds = duration % 60;
         if (remainingSeconds < 10) {
             remainingSeconds = "0" + remainingSeconds;
         }
+
         timer.innerHTML = "0" + minutes + ":" + remainingSeconds;
+
+        // start of a new round, i.e. when we reset the duration above
+        if (duration == roundTime && index < exArray.length) {
+          $('#instruction').text(exArray[index]);
+
+          if (index < exArray.length && index % 2 == 0) { // Rest round
+            $('.workout-screen').css("background", "#62600C");
+            $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
+          } else {  // High-intensity round
+            $('.workout-screen').css("background", "slategrey");
+            $('#next-exercise').text(" ");
+          }
+        }
+
         duration--;
+
+        if (duration < 0) {
+          if (index < exArray.length-1) { bellSound.play(); }
+          nextExercise();
+        }
+
     }
 
   var countdownInterval = setInterval(secondPassed, 1000); // 1 second
-  var exerciseInterval = setInterval(nextExercise, duration*1000 + 600);
-
 }
 
   // ====== Buttons =========
@@ -90,7 +107,7 @@ $(document).ready(function() {
     console.log("begin button loaded");
     $(this).addClass(".hide");
     $('.playlist').css("display", "none");
-    beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
+    beginWorkout(20); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   });
 
   $('#pause').click(function(e){
@@ -106,11 +123,12 @@ $(document).ready(function() {
   $('#complete-btn').click(function(e){
     e.preventDefault();
     console.log('Quack');
-    $('.playlist').css("display", "none");
+    $('.playlist').css("display", "block");
     $('.workout-screen').removeClass("full-screen");
     $('#instruction').text("Loading...");
     timer.innerHTML = "00:00";
     $(this).css("display", "none");
+
   });
 
 
