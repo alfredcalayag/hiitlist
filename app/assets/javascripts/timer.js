@@ -36,10 +36,43 @@ $(document).ready(function() {
     // $('#instruction').text("READY TO WORK?");
     $(".workout-screen").addClass("full-screen");
     var duration = highTime;
+    var lowTime = 5;
 
     function nextExercise() {
       index++;
-      duration = highTime;  //
+
+      // TODO: Fix the logic to depend only on the secondPassed timer.  Use a counter for each second that passes and compare to the roundTime to determine round completion.
+
+      if (index % 2 == 0) {  // rest round
+        roundTime = lowTime;
+        duration = lowTime;
+        clearInterval(exerciseInterval);
+        exerciseInterval = setInterval(nextExercise, duration*1000 + 600);
+      }
+      else {
+        roundTime = highTime; // high-intensity round
+        duration = highTime;
+        clearInterval(exerciseInterval);
+        exerciseInterval = setInterval(nextExercise, duration*1000 + 600);
+      }
+
+
+      // start of a new round, i.e. when we reset the duration above
+      if (duration == roundTime && index < exArray.length) {
+        $('#instruction').text(exArray[index]);
+        bellSound.play();
+
+        if (index < exArray.length && index % 2 == 0) { // Rest round
+          $('.workout-screen').css("background", "#62600C");
+          $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
+        } else {  // High-intensity round
+          $('.workout-screen').css("background", "slategrey");
+          $('#next-exercise').text(" ");
+        }
+        console.log("BUZZER NOISE");
+      }
+
+      // Last item completed, finish the workout!
       if (index > exArray.length-1) {
         clearInterval(exerciseInterval);
         clearInterval(countdownInterval);
@@ -54,20 +87,6 @@ $(document).ready(function() {
     }
 
     function secondPassed() {
-        if (duration == highTime) {
-          $('#instruction').text(exArray[index]);
-          bellSound.play();
-
-          if (index < exArray.length && index % 2 == 0) {
-            $('.workout-screen').css("background", "#62600C");
-            $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
-          } else {
-            $('.workout-screen').css("background", "slategrey");
-            $('#next-exercise').text(" ");
-          }
-          console.log("BUZZER NOISE");
-        }
-
         var minutes = Math.round((duration - 30)/60);
         var remainingSeconds = duration % 60;
         if (remainingSeconds < 10) {
@@ -78,7 +97,7 @@ $(document).ready(function() {
     }
 
   var countdownInterval = setInterval(secondPassed, 1000); // 1 second
-  var exerciseInterval = setInterval(nextExercise, duration*1000 + 600);
+  var exerciseInterval = setInterval(nextExercise, duration*1000 + 700);
 
 }
 
