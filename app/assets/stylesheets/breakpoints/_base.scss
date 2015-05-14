@@ -198,22 +198,6 @@ HEADER STYLES
 }
 
 
-	#logo {
-		display: inline-block;
-  	margin: 0;
-  	padding: 0.35em 0;
-  	font-size: 1.15em;
-  	line-height: 1.15em;
-  	width: 60%;
-    vertical-align: top;
-
-		a {
-      @include transition(color 0.2s ease-in-out);
-			color: $white;
-			text-decoration:none;
-		}
-	}
-
 /*********************
 NAVIGATION STYLES
 *********************/
@@ -355,7 +339,7 @@ nav {
 POSTS & CONTENT STYLES
 *********************/
 header, section, aside {
-  margin: 0.5em;
+  /*margin: 0.5em;*/
 }
 
 section {

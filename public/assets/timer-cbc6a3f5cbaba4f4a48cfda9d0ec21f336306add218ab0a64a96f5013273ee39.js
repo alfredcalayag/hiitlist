@@ -1,7 +1,7 @@
 // timer.js
 
 $(document).ready(function() {
-  console.log("Ok timer loaded!");
+  console.log("Timer loaded");
   // console.log("Audio loaded");
   // bellSound = document.getElementById('bell');
 
@@ -46,9 +46,7 @@ $(document).ready(function() {
         timer.innerHTML = "00:00";
         $('#instruction').text("Workout Complete!");
         console.log("Workout Complete!");
-        // bellSound.play(); // FIXME: this is happening at every exercise!
-        // bellSound.play();
-        // bellSound.play();
+        gong.play();
         $('#start').addClass(".appear");
         $('#complete-btn').css("display","block");
         return;
@@ -87,8 +85,9 @@ $(document).ready(function() {
   // ====== Buttons =========
   $('#start').click(function(e){
     e.preventDefault();
-    console.log("quack");
+    console.log("begin button loaded");
     $(this).addClass(".hide");
+    $('.playlist').css("display", "none");
     beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   });
 
@@ -105,13 +104,12 @@ $(document).ready(function() {
   $('#complete-btn').click(function(e){
     e.preventDefault();
     console.log('Quack');
-    $('workout-screen').removeClass("full-screen");
-  });
-
-  $('#complete-btn').click(function(e){
-    e.preventDefault();
-    console.log('Quack');
+    $('.playlist').css("display", "block");
     $('.workout-screen').removeClass("full-screen");
+    $('#instruction').text("Loading...");
+    timer.innerHTML = "00:00";
+    $(this).css("display", "none");
+
   });
 
 
