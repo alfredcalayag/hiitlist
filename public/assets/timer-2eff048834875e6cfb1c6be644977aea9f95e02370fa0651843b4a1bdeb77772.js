@@ -31,7 +31,16 @@ $(document).ready(function() {
 
 
 
-  beginWorkout = function(highTime) { // TODO: Object Orient it!
+  beginWorkout = function(highTime) {
+  // TODO: Object Orient it!
+  // TODO: Allow user input of lowTime
+
+    // Trial for fixing sound on mobile browsers:
+    bellSound.play();
+    bellSound.pause();
+    gong.play();
+    gong.pause();
+
     var index = 0;
     // $('#instruction').text("READY TO WORK?");
     $(".workout-screen").addClass("full-screen");
@@ -44,12 +53,12 @@ $(document).ready(function() {
 
       // Reset the timer to the round duration.  Either Rest or High Intensity
       if (index % 2 == 0) {  // rest round
-        roundTime = lowTime;
-        duration = lowTime;
+        roundTime = lowTime - 1;
+        duration = lowTime - 1;
       }
       else {
-        roundTime = highTime; // high-intensity round
-        duration = highTime;
+        roundTime = highTime - 1; // high-intensity round
+        duration = highTime - 1;
       }
 
       // If last exercise completed, finish the workout!
@@ -104,7 +113,7 @@ $(document).ready(function() {
     console.log("begin button loaded");
     $(this).addClass(".hide");
     $('.playlist').css("display", "none");
-    beginWorkout(10); // TODO: Allow user input.  For now, manual assignment for demo purposes.
+    beginWorkout(20); // TODO: Allow user input.  For now, manual assignment for demo purposes.
   });
 
   $('#pause').click(function(e){
