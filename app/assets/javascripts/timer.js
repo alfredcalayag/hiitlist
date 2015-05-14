@@ -181,8 +181,8 @@ $(document).ready(function() {
     var playlist = new Playlist();
     playlist.load();
     // TODO: Add user input here!
-    var highTime = 5;
-    var lowTime = 2;
+    var highTime = 10;
+    var lowTime = 5;
     var workout = new Workout(highTime, lowTime);
     var timer = new Timer(workout, playlist);
     timer.reset();
