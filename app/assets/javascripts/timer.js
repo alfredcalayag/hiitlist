@@ -29,8 +29,10 @@ Playlist.prototype = {
     // console.log(this.trackList);
     for(var i = 0; i < this.collection.length; i++) {
       this.trackList.push(this.collection[i].textContent);
+      if (i < this.collection.length-1) {
+        this.trackList.push("Rest");
+      }
     }
-    this.trackList.push("Rest");
   }
 }
 
@@ -100,7 +102,7 @@ Timer.prototype = {
     this.display.html("0" + this.minutes + ":" + this.remainingSeconds);
 
     if (this.workout.duration == this.workout.roundTime && this.playlist.index < this.playlist.trackList.length) {
-    this.workout.instruction.updateDisplay(this.playlist.trackList[this.playlist.index]);
+      this.workout.instruction.updateDisplay(this.playlist.trackList[this.playlist.index]);
       if (this.playlist.index < this.playlist.trackList.length && this.playlist.index % 2 == 0) {
         this.workout.changeScreenColor(this.workout.restColor);
         this.workout.instruction.updateNextDisplay("(Next Exercise: "
@@ -173,18 +175,30 @@ Timer.prototype = {
 $(document).ready(function() {
   console.log("OO Time");
 
-  // ====== Buttons =========
+  // ====== Event Listeners & Buttons =========
   $('#start').click(function(e){
     e.preventDefault();
-    // $(this).addClass(".hide");
-    // $('.playlist').css("display", "none");
-    // beginWorkout(20); // TODO: Allow user input.  For now, manual assignment for demo purposes.
     var playlist = new Playlist();
     playlist.load();
-    var workout = new Workout(20, 10);
+    // TODO: Add user input here!
+    var highTime = 5;
+    var lowTime = 2;
+    var workout = new Workout(highTime, lowTime);
     var timer = new Timer(workout, playlist);
+    timer.reset();
     timer.start();
   });
+
+
+  $('#complete-btn').click(function(e){
+    e.preventDefault();
+    $('.playlist').css("display", "block");
+    $('.workout-screen').removeClass("full-screen");
+    $('#instruction').text("Loading...");
+    $('#timer').textContent = "00:00";
+    $(this).css("display", "none");
+  });
+
 
   $('#pause').click(function(e){
     e.preventDefault();
@@ -195,102 +209,6 @@ $(document).ready(function() {
     e.preventDefault();
     console.log("resume");
   });
-
-  $('#complete-btn').click(function(e){
-    e.preventDefault();
-    console.log('Quack');
-    $('.playlist').css("display", "block");
-    $('.workout-screen').removeClass("full-screen");
-    $instruction.text("Loading...");
-    timerDigits.innerHTML = "00:00";
-    $(this).css("display", "none");
-  });
-
-
-// =======================
-
-  // var myTimer = new Timer();
-  // var myPlaylist = new Playlist();
-
-  // Build exercise playlist
-  // $collection = $('.exercise');
-  // exArray = ['Get Ready...'];
-  // populateArray();
-
-  // function populateArray(){
-  //   for(i = 0; i < $collection.length; i++){
-  //     exArray.push($collection[i].innerHTML);
-  //     if (i < $collection.length-1) {
-  //       exArray.push("Rest");
-  //     }
-  //   }
-  // }
-
-  beginWorkout = function(highTime, lowTime) {
-  // TODO: Allow user input of lowTime
-    // var index = 0;
-    // $(".workout-screen").addClass("full-screen");
-    // var duration = 8;
-    // var lowTime = 5;
-    // var roundTime = 8;
-
-    function nextExercise() {
-      index++;
-
-      // Reset the timer to the round duration.  Either Rest or High Intensity
-      if (index % 2 == 0) {  // rest round
-        roundTime = lowTime - 1;
-        duration = lowTime - 1;
-      }
-      else {
-        roundTime = highTime - 1; // high-intensity round
-        duration = highTime - 1;
-      }
-
-      // If last exercise completed, finish the workout!
-      if (index > exArray.length-1) {
-        clearInterval(countdownInterval);
-        $instruction.text("Workout Complete!");
-        console.log("Workout Complete!");
-        gong.play();
-        $('#start').addClass(".appear");
-        $('#complete-btn').css("display","block");
-        return;
-      }
-    }
-
-    function secondPassed() {
-        var minutes = Math.round((duration - 30)/60);
-        var remainingSeconds = duration % 60;
-        if (remainingSeconds < 10) {
-            remainingSeconds = "0" + remainingSeconds;
-        }
-
-        timerDigits.innerHTML = "0" + minutes + ":" + remainingSeconds;
-
-        // start of a new round, i.e. when we reset the duration above
-        if (duration == roundTime && index < exArray.length) {
-          $instruction.text(exArray[index]);
-
-          if (index < exArray.length && index % 2 == 0) { // Rest round
-            $('.workout-screen').css("background", "#62600C");
-            $('#next-exercise').text("(Next Exercise: " + exArray[index+1] + ")" );
-          } else {  // High-intensity round
-            $('.workout-screen').css("background", "slategrey");
-            $('#next-exercise').text(" ");
-          }
-        }
-
-        duration--;
-
-        if (duration < 0) {
-          if (index < exArray.length-1) { bellSound.play(); }
-          nextExercise();
-        }
-    }
-
-    var countdownInterval = setInterval(secondPassed, 1000); // 1 second
-  }
 
 
 });
