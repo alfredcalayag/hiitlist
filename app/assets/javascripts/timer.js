@@ -46,7 +46,7 @@ $(document).ready(function() {
         timer.innerHTML = "00:00";
         $('#instruction').text("Workout Complete!");
         console.log("Workout Complete!");
-        bellSound.play();
+        gong.play();
         $('#start').addClass(".appear");
         $('#complete-btn').css("display","block");
         return;
