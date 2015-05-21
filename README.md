@@ -52,8 +52,5 @@ This is app is intended for just about anyone that is in good physical condition
 
 
 ##Current Problems
-- Needing to load specific javascript for a specific page.  Otherwise, serving from the asset pipeline runs all of the scripts on every page.  =/
 
-- My javascript is loading too early on the exercises page.  This is solved by refreshing the page, and it will load correctly.  But that's annoying.
-
-- iOS Safari compatability.  A couple of things: rendering of the workout screen is offset, and the audio bell plays twice each time when it should only play once.  There seems to be some documentation from Apple that might provide some solution (https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html)
+- iOS Safari and Chrome compatability (perhaps an issue across all mobile browsers).  A couple of things: rendering of the workout screen is offset, and the audio bell plays twice each time when it should only play once.  There seems to be some documentation from Apple that might provide some solution (https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html)
