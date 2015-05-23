@@ -23,7 +23,7 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 ###Ready to Workout?
 When you select the option to start your workout, the interval timer begins and will play through your list in sequential order (much like a music playlist). At each exercise, the screen will display the exercise name you're supposed to do along with the countdown of the duration.  During rest periods, it displays "REST" and also display the next workout coming up next.
 ![HIIT-In-Workout](http://alfredcalayag.com/imgs/hiitlist/hiit-in-workout.png)
-
+<img alt="HIIT-In-Workout" src="http://alfredcalayag.com/imgs/hiitlist/hiit-in-workout.png" width="100px">
 
 ###All Done?
 ![HIIT-Completed](http://alfredcalayag.com/imgs/hiitlist/hiit-workout-complete.png)
