@@ -12,7 +12,8 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 - Once logged in, you can view your user options
 
 ###Create New HIIT List
-<center><img alt="HIIT-Setup" src="http://alfredcalayag.com/imgs/hiitlist/hiit-setup.png" width="250px"></center>
+<div style="text-align:center;">
+<center><img alt="HIIT-Setup" src="http://alfredcalayag.com/imgs/hiitlist/hiit-setup.png" width="250px"></center></div>
 
 - Click on create a new HIIT List
 - Add exercises to your list that fit your satisfaction.
@@ -21,12 +22,14 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 - Save and Start your workout
 
 ###Ready to Workout?
-<center><img alt="HIIT-In-Workout" src="http://alfredcalayag.com/imgs/hiitlist/hiit-in-workout.png" width="250px"></center>
+<div style="text-align:center;">
+<center><img alt="HIIT-In-Workout" src="http://alfredcalayag.com/imgs/hiitlist/hiit-in-workout.png" width="250px"></center></div>
 
 When you select the option to start your workout, the interval timer begins and will play through your list in sequential order (much like a music playlist). At each exercise, the screen will display the exercise name you're supposed to do along with the countdown of the duration.  During rest periods, it displays "REST" and also display the next workout coming up next.
 
 ###All Done?
-<center><img alt="HIIT-Complete" src="http://alfredcalayag.com/imgs/hiitlist/hiit-workout-complete.png" width="250px"></center>
+<div style="text-align:center;">
+<center><img alt="HIIT-Complete" src="http://alfredcalayag.com/imgs/hiitlist/hiit-workout-complete.png" width="250px"></center></div>
 
 Your completed workouts can be saved and have the option of entering calories burned.  When completed, this workout would be available in your list of completed workouts.
 
