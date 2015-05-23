@@ -12,8 +12,9 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 - Once logged in, you can view your user options
 
 ###Create New HIIT List
+->
 <div style="text-align:center;">
-<center><img alt="HIIT-Setup" src="http://alfredcalayag.com/imgs/hiitlist/hiit-setup.png" width="250px"></center></div>
+<center><img alt="HIIT-Setup" src="http://alfredcalayag.com/imgs/hiitlist/hiit-setup.png" width="250px"></center></div> <-
 
 - Click on create a new HIIT List
 - Add exercises to your list that fit your satisfaction.
