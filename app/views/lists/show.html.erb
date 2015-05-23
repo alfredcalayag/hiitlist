@@ -9,64 +9,14 @@
     <li>Rest Duration: 00:<%= @list.low_time %></li>
   </ul>
 </aside>
-
-<section class="form_exercise">
-<%= form_for( [@list, @list.exercises.build] ) do |f| %>
-    <%= f.hidden_field :list_id, :value => @list.id %>
-    <%= f.label "Add New Exercise: " %>
-    <%= f.text_field :name, :placeholder => "e.g. Jumping Squats" %>
-
-    <%= f.submit "Add", :class => "small-btn" %>
-<% end %>
-</section>
-
-<section class="playlist">
-<% if @exercises %>
-<h3>Your exercises</h3>
-<ol>
-  <% @exercises.each do |exercise| %>
-  <li class="exercise"><%= exercise.name %></li>
-  <% end %>
-</ol>
-
-<% else %>
-<p>You have no exercises in this HIIT List! Add more exercises.</p>
-<% end %>
-</section>
+<%= render partial: "partials/add_exercise_form", object: @list %>
+<%= render partial: "partials/playlist", object: @exercises %>
 
 <button type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
 
 <!-- Workout Screen -->
-<section class="workout-screen">
+<%= render "partials/workout" %>
 
-  <article class="instruction-area">
-    <div>
-      <h1 id="timer">...</h1>
-    </div>
-
-
-    <h1 id="instruction">...</h1>
-
-
-    <div>
-      <h4 id="next-exercise"> </h4>
-    </div>
-
-    <button type="button" class="purple-btn" id="complete-btn">DONE</button>
-  </article>
-
-</section>
-
-
-<!-- <br>
-<div>
-  <button type="button" id="pause">Pause</button>
-</div>
-<br>
-<div>
-  <button type="button" id="resume">Resume</button>
-</div>
- -->
 
 <audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
 <audio id="gong" src="<%= audio_path("gong.mp3") %>"></audio>

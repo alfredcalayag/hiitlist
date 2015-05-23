@@ -1,0 +1,13 @@
+<section class="playlist">
+<% if @exercises %>
+<h3>Your exercises</h3>
+<ol>
+  <% @exercises.each do |exercise| %>
+  <li class="exercise"><%= exercise.name %></li>
+  <% end %>
+</ol>
+
+<% else %>
+<p>You have no exercises in this HIIT List! Add more exercises.</p>
+<% end %>
+</section>

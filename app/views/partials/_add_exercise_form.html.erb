@@ -1,0 +1,9 @@
+<section class="form_exercise">
+<%= form_for( [@list, @list.exercises.build] ) do |f| %>
+    <%= f.hidden_field :list_id, :value => @list.id %>
+    <%= f.label "Add New Exercise: " %>
+    <%= f.text_field :name, :placeholder => "e.g. Jumping Squats" %>
+
+    <%= f.submit "Add", :class => "small-btn" %>
+<% end %>
+</section>
