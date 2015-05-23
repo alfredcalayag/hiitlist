@@ -12,6 +12,8 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 - Once logged in, you can view your user options
 
 ###Create New HIIT List
+![HIIT-Setup](http://alfredcalayag.com/imgs/hiitlist/hiit-setup.png)
+
 - Click on create a new HIIT List
 - Add exercises to your list that fit your satisfaction.
 - Set the high-intensity and low-intensity durations (or use the default).
@@ -20,9 +22,12 @@ H.I.I.T. represents High Intensity Interval Training which a healthy and efficie
 
 ###Ready to Workout?
 When you select the option to start your workout, the interval timer begins and will play through your list in sequential order (much like a music playlist). At each exercise, the screen will display the exercise name you're supposed to do along with the countdown of the duration.  During rest periods, it displays "REST" and also display the next workout coming up next.
+![HIIT-In-Workout](http://alfredcalayag.com/imgs/hiitlist/hiit-in-workout.png)
+
 
 ###All Done?
-The app will save your completed workout.  You will have the option of entering calories burned.  When completed, this workout will now be available in your list of completed workouts.
+![HIIT-Completed](http://alfredcalayag.com/imgs/hiitlist/hiit-workout-complete.png)
+Your completed workouts can be saved and have the option of entering calories burned.  When completed, this workout would be available in your list of completed workouts.
 
 ###Saved HIITS
 Each HIIT that you create will appear in your Saved HIITS section.  You can always repeat your favorite HIIT for a future workout without the hassle of recreating it from scratch.
