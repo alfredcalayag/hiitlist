@@ -60,6 +60,6 @@ This is app is intended for just about anyone that is in good physical condition
 - Create a single-page app.  AJAXify it!
 
 
-##Current Problems
+##Known Issues
 
-- iOS Safari and Chrome compatability (perhaps an issue across all mobile browsers).  A couple of things: rendering of the workout screen is offset, and the audio bell plays twice each time when it should only play once.  There seems to be some documentation from Apple that might provide some solution (https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html)
+- Audio on Mobile: iOS Safari and Chrome compatability (perhaps an issue across all mobile browsers).  Sound just doesn't appear to play, but works fine on desktop.  There seems to be some documentation from Apple that might provide some solution (https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html)
