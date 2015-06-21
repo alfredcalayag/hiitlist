@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @lists = List.where(user_id: @user.id)
     # @exercises = Exercise.where()
+
+    # render json: @user
+    render :json => {:user => @user, :lists => @lists}
   end
 
   def create

@@ -1,4 +1,35 @@
 <!-- public/templates/home.html -->
-This is the home.
+<header class="workout_title">
 
-{{greeting}}
+  <h1>Welcome Back, {{userName}}!</h1>
+</header>
+
+<!-- <section>
+<h3>Create a new HIIT List</h3>
+<%= form_for [@user, @user.lists.build] do |f| %>
+  <div>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.label "New List Name: " %>
+      <%= f.text_field :name, :placeholder => "e.g. Pump it up List" %>
+
+    <p>
+    <%= f.submit "Create" %>
+    </p>
+
+  </div>
+<% end %>
+</section>
+ -->
+
+<section>
+<h2>Your HIIT Lists</h2>
+
+<div ng-repeat="list in lists">
+  <a class="plain-link" href="">
+    <div class="list-item">
+      <h4>{{list.name}} Workout</h4>
+    </div>
+  </a>
+</div>
+
+</section>
