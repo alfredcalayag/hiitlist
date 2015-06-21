@@ -16,6 +16,8 @@
 
 
 //= require angular
-
+//= require angular-route
+//= require main
+//= require_tree ./angular/controllers/.
 
 // require_tree . //temporarily disabled this
