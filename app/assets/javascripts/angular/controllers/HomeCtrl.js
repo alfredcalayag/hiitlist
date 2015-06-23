@@ -17,12 +17,4 @@ myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $
     console.log("Failed to load user data.");
   })
 
-  // $http.get("http://localhost:3000/lists/" + "1").success(function(response, body){
-  //   console.log("Successful List Retrieval");
-  //   console.log(response);
-  // })
-  // .error(function(){
-  //   console.log("List failed to load.");
-  // });
-
 }]);
