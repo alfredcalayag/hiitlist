@@ -1,0 +1,33 @@
+<!-- list.html -->
+
+<header class="workout_title">
+  <h2>{{listName}} Workout</h2>
+</header>
+
+<aside class="duration">
+  <ul>
+    <li>High Intensity Duration: 00:{{highTime}}</li>
+    <li>Rest Duration: 00:{{lowTime}}</li>
+  </ul>
+</aside>
+
+
+<ng-include
+  src="'templates/partials/_add_exercise_form.html'">
+</ng-include>
+
+<ng-include src="'templates/partials/_playlist.html'">
+</ng-include>
+
+
+<button type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
+
+
+<audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
+<audio id="gong" src="<%= audio_path("gong.mp3") %>"></audio>
+
+<!--
+<%= javascript_include_tag "audio" %>
+<%= javascript_include_tag "timer" %>
+
+-->

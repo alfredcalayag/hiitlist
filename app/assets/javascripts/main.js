@@ -14,8 +14,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: "../templates/home.html",
     controller: 'HomeCtrl'
   })
-  .when('/test', {
-    templateUrl: "../templates/test.html",
+  .when('/list', {
+    templateUrl: "../templates/list.html",
     controller: 'ListCtrl'
   })
   .otherwise({

@@ -25,7 +25,7 @@
 <h2>Your HIIT Lists</h2>
 
 <div ng-repeat="list in lists">
-  <a class="plain-link" href="">
+  <a class="plain-link" href="" ng-click="showList(list.id)">
     <div class="list-item">
       <h4>{{list.name}} Workout</h4>
     </div>

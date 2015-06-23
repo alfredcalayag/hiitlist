@@ -1,8 +1,13 @@
 // HomeCtrl.js
-myApp.controller('HomeCtrl', ['$scope', '$http', function($scope, $http) {
+myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
+
+  $scope.showList = function(listId) {
+    $location.path('/list').search({id: listId});
+  }
 
   //Add scope variables
   $scope.greeting = "Hello Gov'na!";
+
 
   $http.get("http://localhost:3000/users/" + "1").success(function(response, body){
     console.log(response);
