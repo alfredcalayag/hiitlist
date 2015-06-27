@@ -61,6 +61,33 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
         }
       }
     }
+
+// Initialize Workout screen and timers
+  $scope.Workout = function(userHighTime, userLowTime) {
+    this.screen = $(".workout-screen");
+    this.restColor = "#62600C";
+    this.workColor = "slategrey";
+
+    this.highTime = $scope.highTime;
+    this.lowTime = $scope.lowTime;
+    this.loadingTime = 5;
+    this.roundTime = this.loadingTime;
+    this.duration = this.roundTime;
+
+    // A workout consists of an Instruction object
+    this.display = new $scope.Display();
+  }
+
+  $scope.Workout.prototype = {
+    fullScreen: function() {
+      this.screen.addClass("full-screen");
+    },
+    hideScreen: function() {
+      this.screen.removeClass("full-screen");
+    },
+    changeScreenColor: function(color) {
+      this.screen.css("background", color);
+    }
   }
 
 }]);
