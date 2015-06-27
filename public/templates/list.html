@@ -19,15 +19,36 @@
 <ng-include src="'templates/partials/_playlist.html'">
 </ng-include>
 
+<!-- <ng-include src="'templates/partials/_workout.html'">
+</ng-include> -->
 
-<button type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
+<section class="workout-screen">
+
+  <article class="instruction-area">
+    <div>
+      <h1 id="timer">...</h1>
+    </div>
 
 
-<audio id="bell" src="<%= audio_path("bell.mp3") %>"></audio>
-<audio id="gong" src="<%= audio_path("gong.mp3") %>"></audio>
+    <h1 id="instruction">...</h1>
+
+
+    <div>
+      <h4 id="next-exercise"> </h4>
+    </div>
+
+    <button type="button" class="purple-btn" id="complete-btn">DONE</button>
+  </article>
+
+</section>
+
+<button ng-click="startHIIT()" type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
+
+
+<audio id="bell" src="./audios/bell.mp3"></audio>
+<audio id="gong" src="./audios/gong.mp3"></audio>
 
 <!--
 <%= javascript_include_tag "audio" %>
 <%= javascript_include_tag "timer" %>
-
 -->

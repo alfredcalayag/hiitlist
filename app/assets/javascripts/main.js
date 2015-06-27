@@ -18,6 +18,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: "../templates/list.html",
     controller: 'ListCtrl'
   })
+  .when('/workout',{
+    templateUrl: "../templates/workout.html",
+    controller: 'WorkoutCtrl'
+  })
   .otherwise({
     redirectTo: '/'
   });
