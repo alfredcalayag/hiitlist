@@ -9,20 +9,24 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
 
     $http.get("../lists/" + $scope.listId)
       .success
+        // Get data
         (function(response, body) {
           $scope.listId = response.list.id;
           $scope.listName = response.list.name;
           $scope.highTime = response.list.high_time;
           $scope.lowTime = response.list.low_time;
           $scope.exercises = response.exercises;
-          console.log($scope.exercises[1]);
-
-          $scope.myList = new $scope.Playlist;
-          $scope.myList.load();
-          console.log($scope.myList);
         })
       .error(function(){
         console.log("Failed to load exercise list");
+      })
+      .then(function(){
+          // Initialize Playlist
+          $scope.myList = new $scope.Playlist;
+          $scope.myList.load();
+
+          // Initialize Workout
+          $scope.myWorkout = new $scope.Workout($scope.highTime, $scope.lowTime);
       });
 
 // Display Area of the current/next exercise
@@ -45,14 +49,15 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
   }
 
 // Adds padding to beginning and end and rests in between
-$scope.Playlist.prototype = {
-  load: function() {
-    this.collection = $scope.exercises;
-    this.trackList.push("Get Ready...");
-    for(var i = 0; i < this.collection.length; i++) {
-        this.trackList.push(this.collection[i].name);
-        if (i < this.collection.length-1) {
-          this.trackList.push("Rest");
+  $scope.Playlist.prototype = {
+    load: function() {
+      this.collection = $scope.exercises;
+      this.trackList.push("Get Ready...");
+      for(var i = 0; i < this.collection.length; i++) {
+          this.trackList.push(this.collection[i].name);
+          if (i < this.collection.length-1) {
+            this.trackList.push("Rest");
+          }
         }
       }
     }
