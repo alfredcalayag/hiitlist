@@ -19,30 +19,9 @@
 <ng-include src="'templates/partials/_playlist.html'">
 </ng-include>
 
-<!-- <ng-include src="'templates/partials/_workout.html'">
-</ng-include> -->
-
-<section class="workout-screen">
-
-  <article class="instruction-area">
-    <div>
-      <h1 id="timer">...</h1>
-    </div>
 
 
-    <h1 id="instruction">...</h1>
-
-
-    <div>
-      <h4 id="next-exercise"> </h4>
-    </div>
-
-    <button type="button" class="purple-btn" id="complete-btn">DONE</button>
-  </article>
-
-</section>
-
-<button ng-click="startHIIT()" type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
+<button ng-click="startHIIT(listId)" type="button" class="purple-btn" id="start"><h4>BEGIN HIIT</h4></button>
 
 
 <audio id="bell" src="./audios/bell.mp3"></audio>

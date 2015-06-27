@@ -76,9 +76,6 @@ var Timer = function(myWorkout, myPlaylist) {
   this.remainingSeconds;
   this.playlist = myPlaylist;
   this.workout = myWorkout;
-  // this.playlist = new Playlist();
-  // this.playlist.load());
-  // console.log(this.playlist.trackList[this.playlist.index + 1]);
 }
 
 Timer.prototype = {
