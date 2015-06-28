@@ -39,6 +39,7 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
     $scope.Instruction.prototype = {
       updateDisplay: function(newInstruction) {
         $scope.display = newInstruction;
+        $scope.$apply();
       },
       updateNextDisplay: function(nextInstruction) {
         $scope.nextDisplay = nextInstruction;
@@ -73,9 +74,9 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
     this.restColor = "#62600C";
     this.workColor = "slategrey";
 
-    this.highTime = $scope.highTime;
-    this.lowTime = $scope.lowTime;
-    this.loadingTime = 10;
+    this.highTime = 3;
+    this.lowTime = 3;
+    this.loadingTime = 3;
     this.roundTime = this.loadingTime;
     this.duration = this.roundTime;
 
@@ -139,7 +140,6 @@ $scope.Timer.prototype = {
         this.workout.instruction.updateNextDisplay(" ");
       }
     }
-
     $scope.$apply();
   },
 
@@ -163,7 +163,8 @@ $scope.Timer.prototype = {
     if (this.playlist.index > this.playlist.trackList.length - 1) {
       clearInterval(this.countdownInterval);
       this.workout.instruction.updateDisplay("Workout Complete!");
-      gong.play();
+      // $scope.display = "Workout Complete!";
+      this.gong.play();
       console.log("Workout Complete!");
       $('#start').addClass(".appear");
       $('#complete-btn').css("display","block");
