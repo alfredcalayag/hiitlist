@@ -21,7 +21,7 @@ myApp.controller('IndexCtrl', ['$scope', '$location', '$http', function($scope, 
     $location.path('/home').search({id: userId});
   }
 
-  $http.get("http://localhost:3000/users/").success(function(response, body){
+  $http.get("../users/").success(function(response, body){
     console.log(response);
     $scope.users = response.users;
     console.log($scope.users[0]);

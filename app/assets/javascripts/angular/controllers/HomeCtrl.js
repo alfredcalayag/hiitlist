@@ -23,7 +23,7 @@ myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $
   $scope.userId = $location.search().id;
 
 
-  $http.get("http://localhost:3000/users/" + $scope.userId).success(function(response, body){
+  $http.get("../users/" + $scope.userId).success(function(response, body){
     console.log(response);
     $scope.userName = response.user.name;
     $scope.lists = response.lists;
