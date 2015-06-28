@@ -1,0 +1,21 @@
+<!-- ./templates/workout.html -->
+
+<section class="workout-screen">
+
+  <article class="instruction-area">
+    <div>
+      <h1 id="timer">{{clock}}</h1>
+    </div>
+
+
+    <h1 id="instruction">{{display}}</h1>
+
+    <div>
+      <h4 id="next-exercise">{{nextDisplay}}</h4>
+    </div>
+
+    <button type="button" ng-click="workoutCompleted(listId)" class="purple-btn" id="complete-btn">DONE</button>
+  </article>
+
+</section>
+<!-- <script src="http://localhost:3000/assets/javascripts/main.js"></script> -->

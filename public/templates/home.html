@@ -1,0 +1,28 @@
+<!-- public/templates/home.html -->
+<header class="workout_title">
+
+  <h1>Welcome Back, {{userName}}!</h1>
+</header>
+
+
+
+<section class="form_exercise">
+    <h3>Create a new workout:</h3>
+    <form name="createWorkoutForm" class="" ng-submit="createWorkout(newWorkout)">
+        <input type="text" placeholder="Name" ng-model="newWorkout.name" required autofocus>
+        <input type="submit" value="Add" class="small-btn">
+    </form>
+</section>
+
+<section>
+<h2>Your HIIT Lists</h2>
+
+<div ng-repeat="list in lists">
+  <a class="plain-link" href="" ng-click="showList(list.id)">
+    <div class="list-item">
+      <h4>{{list.name}} Workout</h4>
+    </div>
+  </a>
+</div>
+
+</section>

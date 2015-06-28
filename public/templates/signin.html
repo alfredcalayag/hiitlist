@@ -1,0 +1,12 @@
+<div class="">
+
+    <div class="">
+      <h1>Sign In Screen</h1>
+    </div>
+
+    <form class="signin-form" ng-submit="signIn()" name="signInForm">
+        <input type="email" placeholder="Login with email" name="email" ng-model="signin.email" required>
+        <input type="submit" value="Login" ng-disabled="signInForm.$invalid">
+    </form>
+
+</div>

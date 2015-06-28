@@ -1,0 +1,24 @@
+<!-- index.html -->
+
+<header class="workout_title">
+  <h1>List of All Users</h1>
+</header>
+
+<section class="form_exercise">
+    <h3>Create a new user:</h3>
+    <form name="createUserForm" class="" ng-submit="createUser(newUser)">
+        <input type="text" placeholder="Name" ng-model="newUser.name" required autofocus>
+        <input type="text" placeholder="Email Address" ng-model="newUser.email" required>
+        <input type="submit" value="Add" class="small-btn">
+    </form>
+</section>
+
+<section>
+<h3>List of All Users:</h3>
+<ul>
+  <li data-ng-repeat="user in users">
+    <a ng-click="userHome(user.id)">{{user.name}}</a>
+  </li>
+</ul>
+
+</section>

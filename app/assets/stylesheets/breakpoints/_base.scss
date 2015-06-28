@@ -427,8 +427,12 @@ ol.playlist {
 }
 
 .workout-screen {
-  display: none;
-  background: $slate-gray;
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: slategray;
 
   .instruction-area {
     margin: 6em 0.5em 0.5em 0.5em;

@@ -44,9 +44,9 @@ This is app is intended for just about anyone that is in good physical condition
 
 
 ##Technologies
-- Framework: Rails
+- Back-end: Rails
 - Database: Postgres
-- Front-end: HTML/CSS/Javascript/Jquery
+- Front-end: Angular + HTML (Re-designed from basic JS/JQuery)
 - Styling: SASS/CSS
 - Testing(Models and Controllers): Rspec
 - Version Control: Git + Github
@@ -55,9 +55,11 @@ This is app is intended for just about anyone that is in good physical condition
 ##Future Developments
 - How about some navigation!  >=|
 
-- Continue style developing on the media breaks for phone-landscape and tablet sizes.  Currently, started with a mobile-first approach with the intention to expand from there.
+- OAuthorization sign up and log in.
 
-- Create a single-page app.  AJAXify it!
+- Sessions for staying logged in.
+
+- Continue style developing on the media breaks for phone-landscape and tablet sizes.  Currently, started with a mobile-first approach with the intention to expand from there.
 
 
 ##Known Issues
