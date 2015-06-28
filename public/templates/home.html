@@ -4,6 +4,16 @@
   <h1>Welcome Back, {{userName}}!</h1>
 </header>
 
+
+
+<section class="form_exercise">
+    <h3>Create a new workout:</h3>
+    <form name="createWorkoutForm" class="" ng-submit="createWorkout(newWorkout)">
+        <input type="text" placeholder="Name" ng-model="newWorkout.name" required autofocus>
+        <input type="submit" value="Add" class="small-btn">
+    </form>
+</section>
+
 <section>
 <h2>Your HIIT Lists</h2>
 
