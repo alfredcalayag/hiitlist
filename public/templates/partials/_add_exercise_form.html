@@ -1,17 +1,8 @@
 <!-- _add_exercise_form.html -->
-<!--
-<%= form_for( [@list, @list.exercises.build] ) do |f| %>
-    <%= f.hidden_field :list_id, :value => @list.id %>
-    <%= f.label "Add New Exercise: " %>
-    <%= f.text_field :name, :placeholder => "e.g. Jumping Squats" %>
-
-    <%= f.submit "Add", :class => "small-btn" %>
-<% end %>
- -->
 
 <section class="form_exercise">
     <form class="" ng-submit="addExercise(newExercise)">
-        <input type="text" placeholder="e.g. Jumping Squats" ng-model="newExercise.name" required>
+        <input type="text" placeholder="e.g. Jumping Squirrel Squats" ng-model="newExercise.name" required>
         <!-- <input type="hidden" value="{{listId}}" ng-model="newExercise.id"> -->
         <input type="submit" value="Add" class="small-btn">
     </form>

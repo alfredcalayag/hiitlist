@@ -4,10 +4,10 @@
 
 <h3>Your exercises</h3>
 
-<div ng-repeat="exercise in exercises">
   <ol>
-    <li class="exercise">{{exercise.name}}</li>
+      <li class="exercise" data-ng-repeat="exercise in exercises">
+        {{exercise.name}}
+      </li>
   </ol>
-</div>
 
 </section>
