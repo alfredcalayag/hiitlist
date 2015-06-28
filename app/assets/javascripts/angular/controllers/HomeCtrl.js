@@ -6,10 +6,10 @@ myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $
   }
 
   //Add scope variables
-  $scope.greeting = "Hello Gov'na!";
+  $scope.userId = $location.search().id;
 
 
-  $http.get("http://localhost:3000/users/" + "1").success(function(response, body){
+  $http.get("http://localhost:3000/users/" + $scope.userId).success(function(response, body){
     console.log(response);
     $scope.userName = response.user.name;
     $scope.lists = response.lists;

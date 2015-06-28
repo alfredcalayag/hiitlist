@@ -7,8 +7,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
 
 // Add routes here
   $routeProvider.when('/', {
-    templateUrl: "../templates/signin.html",
-    controller: 'SignInCtrl'
+    templateUrl: "../templates/index.html",
+    controller: 'IndexCtrl'
   })
   .when('/home', {
     templateUrl: "../templates/home.html",
