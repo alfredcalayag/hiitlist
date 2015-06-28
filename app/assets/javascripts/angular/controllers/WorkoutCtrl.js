@@ -6,6 +6,10 @@ myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope
     $scope.display = "Get Ready...";
     $scope.nextDisplay = "";
 
+    $scope.workoutCompleted = function(listId){
+      $location.path('/list').search({id: listId});
+    }
+
 
     $http.get("../lists/" + $scope.listId)
       .success
