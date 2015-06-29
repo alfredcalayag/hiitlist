@@ -11,7 +11,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
 // Add routes here
   $stateProvider
     .state('index', {
-      url: "/",
+      url: "",
       templateUrl: "../templates/index.html",
       controller: 'IndexCtrl'
     })
