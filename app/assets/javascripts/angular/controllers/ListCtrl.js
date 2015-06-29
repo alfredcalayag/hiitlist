@@ -1,11 +1,14 @@
 // ListCtrl.js
 
-myApp.controller('ListCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
-  $scope.listId = $location.search().id;
+myApp.controller('ListCtrl', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $location, $http, $state, $stateParams) {
+
+  // $scope.listId = $location.search().id;
+  $scope.listId = $stateParams.listId;
   $scope.myList = "Workout List here";
 
-  $scope.startHIIT = function(listId){
-    $location.path('/workout').search({id: listId});
+  $scope.startHIIT = function(myListId){
+    // $location.path('/workout').search({id: listId});
+    $state.go('workout', {listId: myListId});
   }
 
   $scope.addExercise = function($newExercise){

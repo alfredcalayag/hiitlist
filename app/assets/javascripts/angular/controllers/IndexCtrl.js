@@ -1,6 +1,16 @@
 // IndexCtrl.js
 
-myApp.controller('IndexCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
+myApp.controller('IndexCtrl', ['$scope', '$location', '$http', '$state', function($scope, $location, $http, $state) {
+
+// Get all registered users
+  $http.get("../users").success(function(response, body){
+    console.log(response);
+    $scope.users = response.users;
+    console.log($scope.users[0]);
+
+  }).error(function() {
+    console.log("Failed to load user data.");
+  });
 
   $scope.createUser = function(user){
     $http.post("../users/", {user})
@@ -17,17 +27,10 @@ myApp.controller('IndexCtrl', ['$scope', '$location', '$http', function($scope, 
       });
   }
 
-  $scope.userHome = function(userId) {
-    $location.path('/home').search({id: userId});
+  $scope.userHome = function(myId) {
+    // $location.path('/home').search({id: userId});
+    $state.go('home', {userId: myId});
   }
 
-  $http.get("../users/").success(function(response, body){
-    console.log(response);
-    $scope.users = response.users;
-    console.log($scope.users[0]);
-
-  }).error(function() {
-    console.log("Failed to load user data.");
-  });
 
 }]);

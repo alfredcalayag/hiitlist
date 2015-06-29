@@ -1,13 +1,16 @@
 // WorkoutCtrl.js
 
-myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
-    $scope.listId = $location.search().id;
+myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $location, $http, $state, $stateParams) {
+
+    // $scope.listId = $location.search().id;
+    $scope.listId = $stateParams.listId;
     $scope.clock = "00:00";
     $scope.display = "Get Ready...";
     $scope.nextDisplay = "";
 
-    $scope.workoutCompleted = function(listId){
-      $location.path('/list').search({id: listId});
+    $scope.workoutCompleted = function(myListId){
+      // $location.path('/list').search({id: listId});
+      $state.go('list', {listId: $scope.listId});
     }
 
 
