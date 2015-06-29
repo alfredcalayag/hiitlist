@@ -11,7 +11,7 @@ myApp.controller('IndexCtrl', ['$scope', '$http', '$state', function($scope, $ht
   });
 
   $scope.createUser = function(user){
-    $http.post("../users/", {user})
+    $http.post("../users/", {name: user.name, email: user.email})
       .success(function(data){
         $scope.users = data.users;
         $scope.newUser.name = "";
