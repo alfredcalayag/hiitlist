@@ -15,9 +15,9 @@
 //= require turbolinks
 
 
-//= require angular
+//= require angular.min
 // require angular-route
-//= require angular-ui-router
+//= require angular-ui-router.min
 //= require main
 //= require_tree ./angular/controllers/.
 
