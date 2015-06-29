@@ -1,8 +1,7 @@
 // HomeCtrl.js
-myApp.controller('HomeCtrl', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $location, $http, $state, $stateParams) {
+myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
 
   // Get user data
-  console.log($stateParams);
   $scope.userId = $stateParams.userId;
   $http.get("../users/" + $scope.userId).success(function(response, body){
     console.log(response);
@@ -26,8 +25,7 @@ myApp.controller('HomeCtrl', ['$scope', '$location', '$http', '$state', '$stateP
   }
 
   $scope.showList = function(myListId) {
-    // $location.path('/list').search({id: listId});
-    $state.go('list', {listId: myListId});
+    $state.go('list', {listId: myListId, userId: $scope.userId});
   }
 
 

@@ -1,18 +1,15 @@
 // WorkoutCtrl.js
 
-myApp.controller('WorkoutCtrl', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $location, $http, $state, $stateParams) {
+myApp.controller('WorkoutCtrl', ['$scope','$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
 
-    // $scope.listId = $location.search().id;
     $scope.listId = $stateParams.listId;
     $scope.clock = "00:00";
     $scope.display = "Get Ready...";
     $scope.nextDisplay = "";
 
     $scope.workoutCompleted = function(myListId){
-      // $location.path('/list').search({id: listId});
       $state.go('list', {listId: $scope.listId});
     }
-
 
     $http.get("../lists/" + $scope.listId)
       .success
@@ -197,7 +194,6 @@ $scope.Timer.prototype = {
   start: function() {
     //start the clock
     this.countdownInterval = setInterval(this.oneSecond.bind(this), 1000);
-    console.log("starting the clock");
   }
 }
 

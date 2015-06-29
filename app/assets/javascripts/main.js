@@ -24,7 +24,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
   .state('list', {
     // url: "/list",
     templateUrl: "../templates/list.html",
-    params: {listId: 1},
+    params: {listId: 1, userId: 1},
     controller: 'ListCtrl'
   })
   .state('workout', {

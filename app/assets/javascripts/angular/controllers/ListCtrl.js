@@ -1,13 +1,17 @@
 // ListCtrl.js
 
-myApp.controller('ListCtrl', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $location, $http, $state, $stateParams) {
+myApp.controller('ListCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
 
   // $scope.listId = $location.search().id;
+  $scope.userId = $stateParams.userId;
   $scope.listId = $stateParams.listId;
   $scope.myList = "Workout List here";
 
+  $scope.backToHome = function(){
+    $state.go('home', {userId: $scope.userId});
+  }
+
   $scope.startHIIT = function(myListId){
-    // $location.path('/workout').search({id: listId});
     $state.go('workout', {listId: myListId});
   }
 
@@ -24,7 +28,6 @@ myApp.controller('ListCtrl', ['$scope', '$location', '$http', '$state', '$stateP
   }
 
   $http.get("../lists/" + $scope.listId).success(function(response, body){
-    console.log("successful list load");
     // id, name, high_time, low_time, user_id
     $scope.listId = response.list.id;
     $scope.listName = response.list.name;
