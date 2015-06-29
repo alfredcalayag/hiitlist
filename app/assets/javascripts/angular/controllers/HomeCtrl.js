@@ -1,6 +1,15 @@
 // HomeCtrl.js
-myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
+myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
 
+  // Get user data
+  $scope.userId = $stateParams.userId;
+  $http.get("../users/" + $scope.userId).success(function(response, body){
+    console.log(response);
+    $scope.userName = response.user.name;
+    $scope.lists = response.lists;
+  }).error(function() {
+    console.log("Failed to load user data.");
+  });
 
   $scope.createWorkout = function(listData){
     $http.post("../users/" + $scope.userId + "/lists/", {user_id: $scope.userId, name: listData.name})
@@ -15,20 +24,9 @@ myApp.controller('HomeCtrl', ['$scope', '$location', '$http', function($scope, $
       });
   }
 
-  $scope.showList = function(listId) {
-    $location.path('/list').search({id: listId});
+  $scope.showList = function(myListId) {
+    $state.go('list', {listId: myListId, userId: $scope.userId});
   }
 
-  //Add scope variables
-  $scope.userId = $location.search().id;
-
-
-  $http.get("../users/" + $scope.userId).success(function(response, body){
-    console.log(response);
-    $scope.userName = response.user.name;
-    $scope.lists = response.lists;
-  }).error(function() {
-    console.log("Failed to load user data.");
-  })
 
 }]);
