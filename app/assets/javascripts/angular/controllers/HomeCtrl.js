@@ -28,5 +28,9 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', funct
     $state.go('list', {listId: myListId, userId: $scope.userId});
   }
 
+  $scope.backToIndex = function(){
+    $state.go('index');
+  }
+
 
 }]);
