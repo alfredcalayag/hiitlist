@@ -6,7 +6,7 @@ var myApp = angular.module('myApp', ['ui.router']);
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 // Redirect state:
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("");
 
 // Add routes here
   $stateProvider
