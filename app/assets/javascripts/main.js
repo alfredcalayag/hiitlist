@@ -1,7 +1,7 @@
 // main.js
 // Main Angular Controller
 
-var myApp = angular.module('myApp', ['ui.router']);
+var myApp = angular.module('myApp', ['ui.router', 'ngCookies']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -10,15 +10,20 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
 
 // Add routes here
   $stateProvider
-    .state('index', {
+    .state('signin', {
       url: "",
+      templateUrl: "../templates/signin.html",
+      controller: 'SignInCtrl'
+    })
+    .state('index', {
+      // url: "../templates",
       templateUrl: "../templates/index.html",
       controller: 'IndexCtrl'
     })
   .state('home', {
     // url: "/home/:userId",
     templateUrl: "../templates/home.html",
-    params: {userId: 1},
+    // params: {userId: #},
     controller: 'HomeCtrl'
   })
   .state('list', {

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root "static_pages#index"
   # match "*path" => "static_pages#index"
 
+  resources :sessions, :only => [:create, :destroy]
+
   resources :static_pages, :only => [:index]
 
   resources :lists do

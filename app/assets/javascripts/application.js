@@ -18,6 +18,7 @@
 //= require angular.min
 // require angular-route
 //= require angular-ui-router.min
+//= require angular-cookies.min
 //= require main
 //= require_tree ./angular/controllers/.
 

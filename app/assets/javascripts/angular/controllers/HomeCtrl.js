@@ -1,10 +1,13 @@
 // HomeCtrl.js
-myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', '$cookies', function($scope, $http, $state, $stateParams, $cookies) {
+
+  // if ($cookies.currentUserId === "signed out") {
+  //   $state.go('signin');
+  // }
 
   // Get user data
-  $scope.userId = $stateParams.userId;
+  $scope.userId = $cookies.currentUserId;
   $http.get("../users/" + $scope.userId).success(function(response, body){
-    console.log(response);
     $scope.userName = response.user.name;
     $scope.lists = response.lists;
   }).error(function() {
@@ -28,8 +31,9 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', funct
     $state.go('list', {listId: myListId, userId: $scope.userId});
   }
 
-  $scope.backToIndex = function(){
-    $state.go('index');
+  $scope.signOut = function(){
+    $cookies.currentUserId = "signed out";
+    $state.go('signin');
   }
 
 
