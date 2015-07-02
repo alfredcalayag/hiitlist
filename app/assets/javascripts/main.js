@@ -6,10 +6,14 @@ var myApp = angular.module('myApp', ['ui.router', 'ngCookies']);
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 // Redirect state:
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("splash");
 
 // Add routes here
   $stateProvider
+    .state('splash', {
+      templateUrl: "../templates/splash.html",
+      controller: 'SplashCtrl'
+    })
     .state('signin', {
       url: "/",
       templateUrl: "../templates/signin.html",
