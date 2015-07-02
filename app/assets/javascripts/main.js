@@ -6,12 +6,12 @@ var myApp = angular.module('myApp', ['ui.router', 'ngCookies']);
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 // Redirect state:
-  $urlRouterProvider.otherwise("");
+  $urlRouterProvider.otherwise("/");
 
 // Add routes here
   $stateProvider
     .state('signin', {
-      url: "",
+      url: "/",
       templateUrl: "../templates/signin.html",
       controller: 'SignInCtrl'
     })

@@ -9,7 +9,7 @@ myApp.controller('SignInCtrl', ['$scope', '$http', '$state', '$cookies', functio
 
 
   $scope.signIn = function(userEmail) {
-    $http.post("../sessions", {email: mail})
+    $http.post("../sessions", {email: userEmail})
       .success(function(response, body){
         console.log("Successful Session!");
         console.log(response);

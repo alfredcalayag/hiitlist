@@ -1,9 +1,9 @@
 // HomeCtrl.js
 myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', '$cookies', function($scope, $http, $state, $stateParams, $cookies) {
 
-  // if ($cookies.currentUserId === "signed out") {
-  //   $state.go('signin');
-  // }
+  if ($cookies.currentUserId === "signed out") {
+    $state.go('/');
+  }
 
   // Get user data
   $scope.userId = $cookies.currentUserId;
