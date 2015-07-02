@@ -1,12 +1,18 @@
-<div class="">
 
     <div class="">
-      <h1>Sign In Screen</h1>
+      <h1>Sign In</h1>
     </div>
 
-    <form class="signin-form" ng-submit="signIn()" name="signInForm">
+    <form class="signin-form" ng-submit="signIn(signin.email)" name="signInForm">
         <input type="email" placeholder="Login with email" name="email" ng-model="signin.email" required>
-        <input type="submit" value="Login" ng-disabled="signInForm.$invalid">
+        <input class="purple-btn" type="submit" value="Log In" ng-disabled="signin-form.$invalid">
     </form>
 
-</div>
+    <h1>Create an Account</h1>
+    <form class="createUser-form" ng-submit="createUser(newUser)" name="signInForm">
+        <input type="text" placeholder="Username e.g. John Dosey Doe" name="name" ng-model="newUser.name" required>
+
+        <input type="email" placeholder="Email e.g. john@doseydoe.com" name="email" ng-model="newUser.email" required>
+
+        <input class="purple-btn" type="submit" value="Sign Up" ng-disabled="createUser-form.$invalid">
+    </form>

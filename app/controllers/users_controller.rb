@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lists = List.where(user_id: @user.id)
-    # @exercises = Exercise.where()
-
+    # current_user = User.find_by_id(session[:current_user_id])
     # render json: @user
     render :json => {:user => @user, :lists => @lists}
   end
