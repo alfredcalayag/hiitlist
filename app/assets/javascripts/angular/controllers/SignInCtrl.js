@@ -22,4 +22,24 @@ myApp.controller('SignInCtrl', ['$scope', '$http', '$state', '$cookies', functio
       });
   }
 
+  $scope.createUser = function(userData) {
+    $http.post("../users", {name: userData.name, email: userData.email})
+      .success(function(response, body){
+        console.log("Created a new user!  Welcome to the party!");
+      })
+      .catch(function(){
+        console.log("Error in attempt to log in.");
+      })
+      .then(function(){
+        $http.post("../sessions", {email: userData.email})
+          .success(function(response, body){
+            $cookies.currentUserId = response.current_user_id.toString();
+            $state.go('home', {userId: $cookies.currentUserId});
+          })
+          .error(function(){
+            console.log("Auto-login failed. =(");
+          })
+      });
+  }
+
 }]);
