@@ -2,7 +2,7 @@
 myApp.controller('HomeCtrl', ['$scope', '$http', '$state', '$stateParams', '$cookies', function($scope, $http, $state, $stateParams, $cookies) {
 
   if ($cookies.currentUserId === "signed out") {
-    $state.go('/');
+    $state.go('signin');
   }
 
   // Get user data
