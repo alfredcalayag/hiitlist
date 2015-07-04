@@ -4,6 +4,10 @@ lock '3.4.0'
 set :application, 'hiitlist'
 set :repo_url, 'https://github.com/alfredcalayag/hiitlist.git'
 
+set :use_sudo, true
+# set :default_stage, "production"
+# set :rails_env, "production"
+
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
