@@ -10,20 +10,22 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
 
 // Add routes here
   $stateProvider
-    .state('signin', {
+    .state('splash', {
       url: "/",
+      templateUrl: "../templates/splash.html",
+      controller: 'SplashCtrl'
+    })
+    .state('signin', {
+      // url: "/",
       templateUrl: "../templates/signin.html",
       controller: 'SignInCtrl'
     })
     .state('index', {
-      // url: "../templates",
       templateUrl: "../templates/index.html",
       controller: 'IndexCtrl'
     })
   .state('home', {
-    // url: "/home/:userId",
     templateUrl: "../templates/home.html",
-    // params: {userId: #},
     controller: 'HomeCtrl'
   })
   .state('list', {
