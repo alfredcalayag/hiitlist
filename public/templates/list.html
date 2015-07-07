@@ -6,10 +6,18 @@
 </header>
 
 <aside class="duration">
-  <form class="" ng-submit="updateTimer(highTime, lowTime)">
-    <li>High Intensity Duration: 00:<input type="number" ng-model="highTime" required></li>
-    <li>Rest Duration: 00:<input type="number" ng-model="lowTime" required></li>
-    <input type="submit" value="Update" class="small-btn">
+  <form class="form-timer" ng-submit="updateTimer(highTime, lowTime)">
+    <div class="time-edit">
+      High Intensity (s): <input type="number" ng-model="highTime" required>
+    </div>
+
+    <div class="time-edit">
+      Rest (s): <input type="number" ng-model="lowTime" required>
+    </div>
+
+    <div class="time-submit">
+      <input type="submit" value="Update" class="small-btn">
+    </div>
   </form>
 </aside>
 
