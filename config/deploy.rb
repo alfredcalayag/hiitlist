@@ -3,13 +3,17 @@ lock '3.4.0'
 
 set :application, 'hiitlist'
 set :repo_url, 'https://github.com/alfredcalayag/hiitlist.git'
+set :rbenv_type, :system
+set :rbenv_ruby, '2.1.2'
+
 
 set :use_sudo, true
 # set :default_stage, "production"
 # set :rails_env, "production"
 
 # Default branch is :master
-ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, "master"
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/hiitlist'
@@ -38,14 +42,21 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
+# desc 'Restart application'
+# task :restart do
+#   on roles(:app), in: :sequence, wait: 5 do
+#     execute "service thin restart"
+#   end
+# end
 
+namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+    execute "service thin restart"
 
       # Add tests to ensure all are passing before deploying!
     end
