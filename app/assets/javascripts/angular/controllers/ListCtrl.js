@@ -27,8 +27,8 @@ myApp.controller('ListCtrl', ['$scope', '$http', '$state', '$stateParams', funct
       })
   }
 
-  $scope.updateTimer = function(myHighTime, myLowTime){
-    $http.patch("../lists/" + $scope.listId, {id: $scope.listId, highTime: myHighTime, lowTime: myLowTime})
+  $scope.updateTimer = function(){
+    $http.patch("../lists/" + $scope.listId, {id: $scope.listId, highTime: $scope.highTime, lowTime: $scope.lowTime})
       .success(function(data) {
         console.log(data);
       })
