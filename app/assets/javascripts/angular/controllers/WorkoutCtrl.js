@@ -78,9 +78,9 @@ myApp.controller('WorkoutCtrl', ['$scope','$http', '$state', '$stateParams', fun
     this.restColor = "#62600C";
     this.workColor = "slategrey";
 
-    this.highTime = 3;
-    this.lowTime = 3;
-    this.loadingTime = 3;
+    this.highTime = userHighTime;
+    this.lowTime = userLowTime;
+    this.loadingTime = 5; // Delay in seconds before starting workout
     this.roundTime = this.loadingTime;
     this.duration = this.roundTime;
 

@@ -397,6 +397,7 @@ ol li {
 }
 
 .form_exercise {
+  width: 100;
   input {
     display: inline-block;
     height: 40px;
@@ -405,6 +406,20 @@ ol li {
 
   input[type="submit"] {
     background: $green;
+  }
+}
+
+.form-timer {
+  .time-edit{
+    display:inline-block;
+    width: 45%;
+  }
+  input[type="number"] {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    height: 40px;
+    vertical-align: initial;
   }
 }
 

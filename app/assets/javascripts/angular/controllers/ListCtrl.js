@@ -27,6 +27,16 @@ myApp.controller('ListCtrl', ['$scope', '$http', '$state', '$stateParams', funct
       })
   }
 
+  $scope.updateTimer = function(){
+    $http.patch("../lists/" + $scope.listId, {id: $scope.listId, highTime: $scope.highTime, lowTime: $scope.lowTime})
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function() {
+        console.log("Failed to update timer");
+      })
+  }
+
   $http.get("../lists/" + $scope.listId).success(function(response, body){
     // id, name, high_time, low_time, user_id
     $scope.listId = response.list.id;
