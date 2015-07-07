@@ -20,6 +20,14 @@ class ListsController < ApplicationController
     render :json => {:lists => List.where(user_id: @user.id)}
   end
 
+  def update
+    @list = List.find(params[:id])
+    @list.high_time = params[:highTime]
+    @list.low_time = params[:lowTime]
+    @list.save
+    render :json => {:message => "Updated successfully", :low_time => @list.low_time, :high_time => @list.high_time, :name => @list.name}
+  end
+
   protected
   def verified_request?
     super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
